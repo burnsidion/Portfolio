@@ -130,7 +130,7 @@ const apps = [
   {
     name: "React Weather App",
     description:
-      "A full-stack weather app built with React with Context API and Tailwind CSS and Express.js. This completely mimics the Vue applications' functionality and UI/UX. This, in my opinion, highlights the differences between how a React and Vue application handle the same functionality and UI/UX.",
+      "A full-stack weather app built using React alongside the Context API, Tailwind CSS and Express.js. This completely mimics the Vue applications' functionality and UI/UX. This, in my opinion, highlights the differences between how a React and Vue application handle the same functionality and UI/UX.",
     image: reactAppImgHome,
     liveLink: "https://weathering-heights-react-ee026e20f12a.herokuapp.com/",
     repoLink: "https://github.com/burnsidion/React-Weather-App",
