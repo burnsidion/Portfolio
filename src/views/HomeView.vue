@@ -37,11 +37,16 @@
             :key="app.name"
             class="bg-[#393f4d] p-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 flex flex-col h-full"
           >
-            <img
-              :src="app.image"
-              :alt="app.name"
+            <video
+              :src="app.video"
               class="rounded-lg mb-4 w-[400px] h-[250px] object-cover"
-            />
+              autoplay
+              loop
+              muted
+              playsinline
+            >
+              Your browser does not support the video tag.
+            </video>
             <div class="flex flex-col flex-grow justify-between">
               <div class="flex flex-col gap-2">
                 <h2 class="text-2xl font-semibold">{{ app.name }}</h2>
@@ -93,11 +98,11 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
-import vueAppImgHome from "../images/Vue-App-Home.png";
-import reactAppImgHome from "../images/React-App-Home.png";
-import SkeletonCard from "../components/SkeletonCard.vue";
 import ProfilePic from "../images/profile-pic.jpg";
+import VueAppVideo from "../assets/videos/Vue-Weather-App.mp4";
+import ReactAppVideo from "../assets/videos/React-Weather-App.mp4";
 
+import SkeletonCard from "../components/SkeletonCard.vue";
 const fullText = ref(
   "I'm a frontend-focused full-stack software engineer specializing in Vue.js, React, and modern web technologies. Passionate about building sleek, intuitive user interfaces with a clean and maintainable codebase. I love to learn and share my knowledge with others in a supportive and encouraging manner. Below, you can view some recent personal projects that I have built. With more to come!"
 );
@@ -123,7 +128,7 @@ const apps = [
     name: "Vue Weather App",
     description:
       "A full-stack weather app built with Vue.js and Tailwind CSS on the frontend, and Express.js on the backend. Allowing users to search for and preview the weather for a searched city. Utliizing the OpenWeatherMap API and the MapBox API. With Local Storage to handle saving and tracking cities.",
-    image: vueAppImgHome,
+    video: VueAppVideo,
     liveLink: "https://weathering-heights-d1cfbe2e31ee.herokuapp.com/",
     repoLink: "https://github.com/burnsidion/Vue-Weather-App",
   },
@@ -131,7 +136,7 @@ const apps = [
     name: "React Weather App",
     description:
       "A full-stack weather app built using React alongside the Context API, Tailwind CSS and Express.js. This completely mimics the Vue applications' functionality and UI/UX. This, in my opinion, highlights the differences between how a React and Vue application handle the same functionality and UI/UX.",
-    image: reactAppImgHome,
+    video: ReactAppVideo,
     liveLink: "https://weathering-heights-react-ee026e20f12a.herokuapp.com/",
     repoLink: "https://github.com/burnsidion/React-Weather-App",
   },
