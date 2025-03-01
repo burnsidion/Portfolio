@@ -14,7 +14,7 @@
           class="w-32 h-32 object-cover rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg"
         />
 
-        <div class="relative w-full max-w-2xl min-h-[200px]">
+        <div class="relative w-full max-w-2xl min-h-[300px] mt-6">
           <p
             class="text-lg text-gray-400 whitespace-pre-wrap text-center bio-text"
           >
