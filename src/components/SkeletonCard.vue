@@ -2,9 +2,7 @@
   <div
     class="bg-gray-800 p-6 rounded-xl shadow-lg animate-pulse flex flex-col h-full w-full"
   >
-    <div
-      class="h-[250px] w-[400px] bg-gray-700 rounded-lg mb-4 md:w-[400px] md:h-[250px]"
-    ></div>
+    <div class="h-[250px] w-full bg-gray-700 rounded-lg mb-4"></div>
 
     <div class="flex flex-col flex-grow justify-between">
       <div class="flex flex-col gap-2">
