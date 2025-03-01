@@ -26,7 +26,7 @@
       <h2 class="text-3xl font-semibold mb-5 text-center projects-heading">
         My Current Personal Projects
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl w-full">
         <template v-if="isLoading">
           <SkeletonCard v-for="i in 2" :key="i" />
         </template>
@@ -147,7 +147,7 @@ onMounted(() => {
 
 <style scoped>
 .bio-text {
-  min-height: 200px;
+  min-height: 150px;
   max-width: 100%;
   overflow: hidden;
   transition: all 0.3s ease-in-out;

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gray-800 p-6 rounded-xl shadow-lg animate-pulse flex flex-col h-full w-full"
+    class="bg-[#2c2f3b] p-6 rounded-xl shadow-lg animate-pulse flex flex-col h-[600px] w-full max-w-md md:max-w-lg"
   >
     <div class="h-[250px] w-full bg-gray-700 rounded-lg mb-4"></div>
 
