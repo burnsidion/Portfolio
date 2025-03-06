@@ -1,6 +1,6 @@
 <template>
     <transition name="fade" appear>
-        <div class="min-h-screen bg-[#1d1e22] text-[#fff1e7] mt-20">
+        <div class="min-h-screen bg-[#1d1e22] text-[#fff1e7] mt-20 px-2">
             <h2 class="text-3xl font-semibold mb-5 text-center">About Me</h2>
             <div class="min-h-[100px]">
                 <p class="text-lg text-gray-400 text-center max-w-3xl mx-auto animate-typing">
