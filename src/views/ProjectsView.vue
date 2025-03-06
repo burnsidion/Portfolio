@@ -2,7 +2,7 @@
     <transition name="fade" appear>
         <div class="min-h-screen bg-[#1d1e22] text-[#fff1e7] pt-20">
             <h2 class="text-3xl font-semibold mb-5 text-center">My Personal Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto px-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto px-5 pb-5">
                 <template v-if="isLoading">
                     <SkeletonCard v-for="n in apps.length" :key="n" />
                 </template>
