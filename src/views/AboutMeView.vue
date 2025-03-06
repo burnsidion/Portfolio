@@ -1,41 +1,53 @@
 <template>
     <transition name="fade" appear>
-        <div class="min-h-screen bg-[#1d1e22] text-[#fff1e7] mt-20 px-2">
-            <h2 class="text-3xl font-semibold mb-5 text-center">About Me</h2>
+        <div class="min-h-screen bg-[#1d1e22] text-[#fff1e7] mt-20 px-4">
+            <!-- About Me Header -->
+            <h2 class="text-4xl font-bold mb-6 text-center">About Me</h2>
+
+            <!-- Typewriter Bio -->
             <div class="min-h-[100px]">
-                <p class="text-lg text-gray-400 text-center max-w-3xl mx-auto animate-typing">
+                <p class="text-xl text-gray-300 text-center max-w-3xl mx-auto animate-typing leading-relaxed">
                     {{ displayedText }}<span v-if="showCursor" class="cursor">|</span>
                 </p>
             </div>
-            <!-- photos -->
-            <div class="flex justify-center gap-6 my-6 overflow-y-scroll">
+
+            <!-- Photos Section -->
+            <div class="flex flex-wrap justify-center gap-6 my-10">
                 <img :src="Aries" alt="Aries"
-                    class="w-70 h-70 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
+                    class="w-40 h-40 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
                 <img :src="Ibby" alt="Ibby"
-                    class="w-70 h-70 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
+                    class="w-40 h-40 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
                 <img :src="Vader" alt="Vader"
-                    class="w-70 h-70 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
+                    class="w-40 h-40 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
             </div>
-            <!-- music links -->
-            <div class="mt-6 text-center">
-                <h3 class="text-xl font-semibold mb-2">Check out some material!:</h3>
+
+            <!-- Music Section -->
+            <div class="mt-10 text-center">
+                <h3 class="text-2xl font-semibold mb-4">Check out some material!:</h3>
+
+                <!-- Typewriter Music Description -->
                 <div class="min-h-[100px]">
-                    <p class="text-lg text-gray-400 text-center max-w-3xl mx-auto">
+                    <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto leading-relaxed">
                         {{ displayedMusicText }}<span v-if="showMusicCursor" class="cursor">|</span>
                     </p>
                 </div>
-                <div class="flex flex-col md:flex-row justify-center gap-6 my-6">
+
+                <!-- Video Section -->
+                <div class="flex flex-col md:flex-row justify-center gap-6 my-8">
                     <!-- YouTube Video Embed -->
-                    <div class="relative w-full max-w-2xl">
-                        <iframe class="w-full h-[315px] rounded-lg shadow-[0px_4px_10px_rgba(255,255,255,0.2)]"
+                    <div
+                        class="relative w-full md:w-1/2 max-w-2xl border-2 border-gray-600 rounded-lg shadow-[0px_4px_20px_rgba(255,255,255,0.3)]">
+                        <iframe class="w-full h-[250px] md:h-[315px] rounded-lg"
                             src="https://www.youtube.com/embed/ATFxLFDcv5g" title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen>
                         </iframe>
                     </div>
+
                     <!-- Local Video -->
-                    <div class="relative w-full max-w-2xl">
-                        <video class="w-full h-[315px] rounded-lg shadow-[0px_4px_10px_rgba(255,255,255,0.2)]" controls>
+                    <div
+                        class="relative w-full md:w-1/2 max-w-2xl border-2 border-gray-600 rounded-lg shadow-[0px_4px_20px_rgba(255,255,255,0.3)]">
+                        <video class="w-full h-[250px] md:h-[315px] rounded-lg" controls>
                             <source :src="OnlyAshSolo" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -45,7 +57,6 @@
         </div>
     </transition>
 </template>
-
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
@@ -82,14 +93,13 @@ const typeText = (textRef, displayedRef, cursorRef) => {
         }
     }, 40);
 
-    intervals.push(interval); 
+    intervals.push(interval);
 };
 
 onMounted(() => {
     typeText(fullText, displayedText, showCursor);
     typeText(musicText, displayedMusicText, showMusicCursor);
 });
-
 
 onUnmounted(() => {
     intervals.forEach(clearInterval);
