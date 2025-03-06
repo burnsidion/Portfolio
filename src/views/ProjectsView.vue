@@ -7,28 +7,10 @@
                     <SkeletonCard v-for="n in apps.length" :key="n" />
                 </template>
                 <template v-else>
-                    <div v-for="(app, index) in apps" :key="app.name"
-                        class="bg-[#393f4d] p-6 rounded-xl shadow-lg flex flex-col h-[600px]">
-                        <video :src="app.video" class="rounded-lg mb-4 w-full h-[250px]" autoplay loop muted
-                            playsinline>
-                        </video>
-                        <div class="flex flex-col flex-grow">
-                            <h3 class="text-2xl font-semibold">{{ app.name }}</h3>
-                            <p class="text-gray-400 my-4 min-h-[100px]">
-                                {{ typedDescriptions[index] }}
-                                <span v-if="showCursor[index]" class="text-white">|</span>
-                            </p>
-                            <div class="flex justify-between w-full mt-auto">
-                                <a :href="app.liveLink" target="_blank"
-                                    class="bg-[#1d1e22] hover:bg-blue-600 py-2 px-4 rounded-lg">
-                                    Live App
-                                </a>
-                                <a :href="app.repoLink" target="_blank"
-                                    class="bg-[#1d1e22] hover:bg-blue-600 py-2 px-4 rounded-lg">
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
+                    <div v-for="(app, index) in apps" :key="app.name">
+                        <FlipCard class="h-[600px] w-full" :description="typedDescriptions[index]" :media="app.video"
+                            rotate="y" subtitle="Whats it do?" :title="app.name" :liveLink="app.liveLink"
+                            :repoLink="app.repoLink" />
                     </div>
                 </template>
             </div>
@@ -42,6 +24,7 @@ import { ref, onMounted, onUnmounted } from "vue";
 import VueAppVideo from "../assets/videos/Vue-Weather-App.mp4";
 import ReactAppVideo from "../assets/videos/React-Weather-App.mp4";
 import SkeletonCard from "../components/SkeletonCard.vue";
+import FlipCard from "../components/FlipCard.vue";
 
 const isLoading = ref(true);
 const apps = [
