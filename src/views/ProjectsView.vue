@@ -9,7 +9,9 @@
                 <template v-else>
                     <div v-for="(app, index) in apps" :key="app.name"
                         class="bg-[#393f4d] p-6 rounded-xl shadow-lg flex flex-col h-[600px]">
-                        <video :src="app.video" class="rounded-lg mb-4 w-full h-[250px]" autoplay loop muted></video>
+                        <video :src="app.video" class="rounded-lg mb-4 w-full h-[250px]" autoplay loop muted
+                            playsinline>
+                        </video>
                         <div class="flex flex-col flex-grow">
                             <h3 class="text-2xl font-semibold">{{ app.name }}</h3>
                             <p class="text-gray-400 my-4 min-h-[100px]">
