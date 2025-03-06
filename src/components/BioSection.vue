@@ -1,13 +1,13 @@
 <template>
     <transition name="fade" appear>
         <section class="text-center pt-16 w-full flex flex-col items-center mx-auto">
-            <div class="text-5xl w-full font-bold mb-1 font-poppins text-white pb-14 md:pb-0">
+            <div class="text-5xl w-full font-bold mb-1 font-poppins text-white pb-14 md:pb-0 pt-40">
                 <h1 class="font-poppins pb-2">Ian Burnside</h1>
                 <MorphingText :texts="texts" />
             </div>
             <img :src="ProfilePic" alt="Ian Burnside"
                 class="w-40 h-40 object-cover rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg" />
-            <div class="relative w-full max-w-2xl mt-10 min-h-[250px] text-center">
+            <div class="relative w-full max-w-2xl mt-10 min-h-[250px] text-left">
                 <p class="text-lg text-gray-400 whitespace-pre-wrap bio-text">
                     {{ displayedText }}<span v-if="showCursor" class="cursor">|</span>
                 </p>

@@ -1,22 +1,32 @@
 <template>
-  <nav class="bg-gray-800 shadow-md fixed top-0 w-full z-50">
-    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between px-6">
-        <img :src="Pentagram" alt="image of a pentagram" class="h-8 w-8 absolute left-0 ml-4" />
-        <div class="flex space-x-4 absolute left-1/2 transform -translate-x-1/2 text-center">
-          <router-link to="/about"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</router-link>
-          <router-link to="/"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</router-link>
-          <router-link to="/projects"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
-            Projects</router-link>
-        </div>
+  <nav class="fixed top-0 w-full z-50 px-6 py-14">
+    <div class="flex justify-between items-center max-w-7xl mx-auto">
+      <!-- Use @click event to refresh the page if already on '/' -->
+      <router-link to="/" @click="handleClick">
+        <img :src="Pentagram" alt="image of a pentagram" class="h-10 w-10 filter invert cursor-pointer" />
+      </router-link>
+      <div class="flex space-x-6 text-white">
+        <router-link to="/about" class="text-sm font-medium hover:text-gray-400 transition duration-300">
+          About
+        </router-link>
+        <router-link to="/projects" class="text-sm font-medium hover:text-gray-400 transition duration-300">
+          Projects
+        </router-link>
       </div>
     </div>
   </nav>
 </template>
 
 <script setup>
-import Pentagram from "../images/pentagram-svgrepo-com.svg"
+import { useRoute } from "vue-router";
+import Pentagram from "../images/pentagram-svgrepo-com.svg";
+
+const route = useRoute();
+
+const handleClick = (event) => {
+  if (route.path === "/") {
+    event.preventDefault();
+    window.location.reload();
+  }
+};
 </script>
