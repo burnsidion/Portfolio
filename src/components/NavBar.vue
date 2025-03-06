@@ -5,12 +5,11 @@
         <img :src="Pentagram" alt="image of a pentagram" class="h-8 w-8 absolute left-0 ml-4" />
         <div class="flex space-x-4 absolute left-1/2 transform -translate-x-1/2 text-center">
           <router-link to="/about"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About
-            Me</router-link>
+            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</router-link>
           <router-link to="/"
             class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</router-link>
           <router-link to="/projects"
-            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Personal
+            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
             Projects</router-link>
         </div>
       </div>
