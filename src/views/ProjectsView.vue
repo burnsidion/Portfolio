@@ -52,19 +52,12 @@ const apps = [
     },
     {
         name: "React Weather App",
-<<<<<<< HEAD
-        description: "A React-based weather app with the same functionality as its Vue counterpart.",
-=======
         description: "A React-based weather app with the same functionality as its Vue counterpart. Utilizes React's Context API for state management as well.",
->>>>>>> enhancements-continued
         video: ReactAppVideo,
         liveLink: "https://weathering-heights-react-ee026e20f12a.herokuapp.com/",
         repoLink: "https://github.com/burnsidion/React-Weather-App",
     },
 ];
-<<<<<<< HEAD
-</script>
-=======
 
 const typedDescriptions = ref(Array(apps.length).fill(""));
 const showCursor = ref(Array(apps.length).fill(true));
@@ -121,4 +114,3 @@ onMounted(() => {
     }
 }
 </style>
->>>>>>> enhancements-continued
