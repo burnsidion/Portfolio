@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 import VueAppVideo from "../assets/videos/Vue-Weather-App.mp4";
 import ReactAppVideo from "../assets/videos/React-Weather-App.mp4";
@@ -61,6 +61,7 @@ const apps = [
 
 const typedDescriptions = ref(Array(apps.length).fill(""));
 const showCursor = ref(Array(apps.length).fill(true));
+const intervals = [];
 
 const typeText = (text, index) => {
     let i = 0;
@@ -75,6 +76,8 @@ const typeText = (text, index) => {
             setTimeout(() => (showCursor.value[index] = false), 500);
         }
     }, speed);
+
+    intervals.push(interval);
 };
 
 onMounted(() => {
@@ -84,6 +87,11 @@ onMounted(() => {
             typeText(app.description, index);
         });
     }, 2000);
+});
+
+
+onUnmounted(() => {
+    intervals.forEach(clearInterval);
 });
 </script>
 

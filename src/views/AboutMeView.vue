@@ -46,13 +46,13 @@
     </transition>
 </template>
 
+
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import Aries from "../images/Aries.png";
 import Ibby from "../images/Ibby.png";
 import Vader from "../images/Vader.png";
-import OnlyAshSolo from "../assets/videos/OnlyAshSolo.mp4"
-
+import OnlyAshSolo from "../assets/videos/OnlyAshSolo.mp4";
 
 const fullText = ref(
     "I have a deep passion for coding, music, and software engineering. Before diving into web development, I spent years playing guitar in bands and recording my own music..."
@@ -68,6 +68,7 @@ const showCursor = ref(true);
 const displayedMusicText = ref("");
 const showMusicCursor = ref(true);
 
+const intervals = [];
 
 const typeText = (textRef, displayedRef, cursorRef) => {
     let index = 0;
@@ -80,11 +81,18 @@ const typeText = (textRef, displayedRef, cursorRef) => {
             cursorRef.value = false;
         }
     }, 40);
+
+    intervals.push(interval); 
 };
 
 onMounted(() => {
     typeText(fullText, displayedText, showCursor);
     typeText(musicText, displayedMusicText, showMusicCursor);
+});
+
+
+onUnmounted(() => {
+    intervals.forEach(clearInterval);
 });
 </script>
 
