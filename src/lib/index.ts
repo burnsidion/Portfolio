@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "vue";
+import { HTMLAttributes } from 'vue';
 
 export interface SphereIcon {
   x: number;
@@ -10,7 +10,7 @@ export interface SphereIcon {
 }
 
 export interface IconCloudProps {
-  class?: HTMLAttributes["class"];
+  class?: HTMLAttributes['class'];
   images?: string[];
 }
 

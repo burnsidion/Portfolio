@@ -28,7 +28,7 @@
     <!-- Mobile Menu Modal -->
     <transition name="slide-fade">
       <div v-if="isMenuOpen"
-        class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center text-white text-2xl space-y-6">
+        class="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center text-white text-2xl space-y-6 min-h-screen w-full">
         <button @click="closeMenu" class="absolute top-5 right-5 text-3xl">✕</button>
         <router-link to="/about" @click="closeMenu" class="hover:text-gray-400 transition duration-300">
           About
@@ -39,7 +39,7 @@
         <router-link to="/" @click="closeMenu" class="hover:text-gray-400 transition duration-300">
           Home
         </router-link>
-        <router-link to="/conact" class="text-lg font-medium hover:text-gray-400 transition duration-300">
+        <router-link to="/conact" class="hover:text-gray-400 transition duration-300">
           Contact
         </router-link>
       </div>

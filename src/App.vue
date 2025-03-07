@@ -1,7 +1,7 @@
 <script setup>
-import NavBar from "./components/NavBar.vue";
-import { Motion } from "motion-v";
-import AuroraBackground from "./components/AuroraBackground.vue";
+  import NavBar from "./components/NavBar.vue";
+  import { Motion } from "motion-v";
+  import AuroraBackground from "./components/AuroraBackground.vue";
 </script>
 
 <template>
