@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { cn } from "../lib/utils";
-import { ref, onMounted, onUnmounted, withDefaults } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const TEXT_CLASSES = "absolute inset-x-0 top-0 m-auto inline-block w-full font-[Audiowide]";
 
