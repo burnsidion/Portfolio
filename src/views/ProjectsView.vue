@@ -19,71 +19,65 @@
 </template>
 
 <script setup>
-    import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
-    import VueAppVideo from "../assets/videos/Vue-Weather-App.mp4";
-    import ReactAppVideo from "../assets/videos/React-Weather-App.mp4";
-    import SkeletonCard from "../components/SkeletonCard.vue";
-    import FlipCard from "../components/FlipCard.vue";
+import VueAppVideo from "../assets/videos/Vue-Weather-App.mp4";
+import ReactAppVideo from "../assets/videos/React-Weather-App.mp4";
+import SkeletonCard from "../components/SkeletonCard.vue";
+import FlipCard from "../components/FlipCard.vue";
 
-    const isLoading = ref(true);
-    const apps = [
-        {
-            name: "Vue Weather App",
-            description: "A full stack weather app built with Vue.js and Tailwind on the front end, and express.js on the backend. Uses the OpenWeatherMap API, and MapBox API to allow users to search for, preview, and track cities and their weather.",
-            video: VueAppVideo,
-            liveLink: "https://weathering-heights-d1cfbe2e31ee.herokuapp.com/",
-            repoLink: "https://github.com/burnsidion/Vue-Weather-App",
-        },
-        {
-            name: "React Weather App",
-            description: "A React-based weather app with the same functionality as its Vue counterpart. Utilizes React's Context API for state management as well.",
-            video: ReactAppVideo,
-            liveLink: "https://weathering-heights-react-ee026e20f12a.herokuapp.com/",
-            repoLink: "https://github.com/burnsidion/React-Weather-App",
-        },
-    ];
-
-    const typedDescriptions = ref(Array(apps.length).fill(""));
-    const showCursor = ref(Array(apps.length).fill(true));
-    const intervals = [];
-
-    const typeText = (text, index) =>
+const isLoading = ref(true);
+const apps = [
     {
-        let i = 0;
-        const speed = 40;
-
-        const interval = setInterval(() =>
-        {
-            if (i < text.length) {
-                typedDescriptions.value[index] += text[i];
-                i++;
-            } else {
-                clearInterval(interval);
-                setTimeout(() => (showCursor.value[index] = false), 500);
-            }
-        }, speed);
-
-        intervals.push(interval);
-    };
-
-    onMounted(() =>
+        name: "Vue Weather App",
+        description: "A full stack weather app built with Vue.js and Tailwind on the front end, and express.js on the backend. Uses the OpenWeatherMap API, and MapBox API to allow users to search for, preview, and track cities and their weather.",
+        video: VueAppVideo,
+        liveLink: "https://weathering-heights-d1cfbe2e31ee.herokuapp.com/",
+        repoLink: "https://github.com/burnsidion/Vue-Weather-App",
+    },
     {
-        setTimeout(() =>
-        {
-            isLoading.value = false;
-            apps.forEach((app, index) =>
-            {
-                typeText(app.description, index);
-            });
-        }, 2000);
-    });
+        name: "React Weather App",
+        description: "A React-based weather app with the same functionality as its Vue counterpart. Utilizes React's Context API for state management as well.",
+        video: ReactAppVideo,
+        liveLink: "https://weathering-heights-react-ee026e20f12a.herokuapp.com/",
+        repoLink: "https://github.com/burnsidion/React-Weather-App",
+    },
+];
+
+const typedDescriptions = ref(Array(apps.length).fill(""));
+const showCursor = ref(Array(apps.length).fill(true));
+const intervals = [];
+
+const typeText = (text, index) => {
+    let i = 0;
+    const speed = 40;
+
+    const interval = setInterval(() => {
+        if (i < text.length) {
+            typedDescriptions.value[index] += text[i];
+            i++;
+        } else {
+            clearInterval(interval);
+            setTimeout(() => (showCursor.value[index] = false), 500);
+        }
+    }, speed);
+
+    intervals.push(interval);
+};
+
+onMounted(() => {
+    setTimeout(() => {
+        isLoading.value = false;
+        apps.forEach((app, index) => {
+            typeText(app.description, index);
+        });
+    }, 2000);
+});
 
 
-    onUnmounted(() =>
-    {
-        intervals.forEach(clearInterval);
-    });
+onUnmounted(() => {
+    intervals.forEach(clearInterval);
+});
 </script>
 
 <style scoped>

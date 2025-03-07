@@ -10,16 +10,15 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'vue/multi-word-component-names': 'off',
-    'prettier/prettier': [
+    'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+    'vue/no-multiple-template-root': 'off',
+    'vue/html-indent': ['error', 2],
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/max-attributes-per-line': [
       'error',
       {
-        semi: true,
-        singleQuote: true,
-        printWidth: 100,
-        tabWidth: 2,
-        trailingComma: 'es5',
-        bracketSpacing: true,
+        singleline: 5,
+        multiline: { max: 1, allowFirstLine: false },
       },
     ],
   },

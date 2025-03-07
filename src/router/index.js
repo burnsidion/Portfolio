@@ -7,6 +7,7 @@ const routes = [
   { path: '/', component: HomeView },
   { path: '/projects', component: ProjectsView },
   { path: '/about', component: AboutMeView },
+  { path: '/refresh', component: HomeView },
 ];
 
 const router = createRouter({

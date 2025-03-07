@@ -46,26 +46,26 @@
 </template>
 
 <script setup>
-    import { computed } from "vue";
-    import { cn } from "../lib/utils";
+import { computed } from "vue";
+import { cn } from "../lib/utils";
 
-    const props = defineProps({
-        media: String,
-        title: String,
-        subtitle: String,
-        description: String,
-        rotate: { type: String, default: "y" },
-        class: String,
-        liveLink: String,
-        repoLink: String,
-    });
+const props = defineProps({
+    media: String,
+    title: String,
+    subtitle: String,
+    description: String,
+    rotate: { type: String, default: "y" },
+    class: String,
+    liveLink: String,
+    repoLink: String,
+});
 
-    const isVideo = computed(() => props.media?.endsWith(".mp4"));
+const isVideo = computed(() => props.media?.endsWith(".mp4"));
 
-    const rotationClass = {
-        x: ["group-hover:[transform:rotateX(180deg)]", "[transform:rotateX(180deg)]"],
-        y: ["group-hover:[transform:rotateY(180deg)]", "[transform:rotateY(180deg)]"],
-    };
+const rotationClass = {
+    x: ["group-hover:[transform:rotateX(180deg)]", "[transform:rotateX(180deg)]"],
+    y: ["group-hover:[transform:rotateY(180deg)]", "[transform:rotateY(180deg)]"],
+};
 
-    const rotation = computed(() => rotationClass[props.rotate]);
+const rotation = computed(() => rotationClass[props.rotate]);
 </script>
