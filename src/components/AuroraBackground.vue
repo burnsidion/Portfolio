@@ -4,7 +4,7 @@
             'relative min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-900 text-slate-950 transition-bg',
             props.class,
         )">
-            <div class="absolute inset-0 overflow-hidden">
+            <div class="fixed inset-0 overflow-hidden">
                 <div :class="cn(
                     'filter blur-[10px] invert dark:invert-0 pointer-events-none absolute -inset-[400px] opacity-50 will-change-transform;',
                     '[--white-gradient:repeating-linear-gradient(100deg,var(--white)_0%,var(--white)_7%,var(--transparent)_10%,var(--transparent)_12%,var(--white)_16%)]',
