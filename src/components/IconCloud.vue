@@ -1,5 +1,5 @@
 <template>
-    <canvas ref="canvasRef" width="300" height="300" :class="'rounded-lg ' + (props.class || '')" role="img"
+    <canvas ref="canvasRef" width="300" height="300" :class="'rounded-lg mb-3' + (props.class || '')" role="img"
         aria-label="Interactive 3D Image Cloud" @mousedown="handleMouseDown" @mousemove="handleMouseMove"
         @mouseup="handleMouseUp" @mouseleave="handleMouseUp" />
 </template>

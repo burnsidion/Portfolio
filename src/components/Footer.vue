@@ -1,6 +1,6 @@
 <template>
     <footer class="w-full">
-        <div class="flex justify-center items-center gap-5 mt-4 md:gap-8 lg:gap-10 md:justify-center sm:justify-between sm:w-2/3 sm:mx-auto">
+        <div class="flex justify-center sm:justify-start items-center gap-5 mt-4 md:gap-8 lg:gap-10 sm:w-2/3 sm:mx-auto">
             <a href="https://github.com/burnsidion" target="_blank"
                 class="opacity-70 hover:opacity-100 transition-transform hover:scale-110 filter invert">
                 <font-awesome-icon :icon="['fab', 'github']" class="text-2xl" />
