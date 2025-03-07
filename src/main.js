@@ -1,10 +1,22 @@
 import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+  faGithub,
+  faLinkedin,
+  faTwitter,
+  faDribbble,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 import "./style.css";
 import App from "./App.vue";
 import About from "./views/AboutMeView.vue";
 import Projects from "./views/ProjectsView.vue";
 import HomeView from "./views/HomeView.vue";
+
+library.add(faGithub, faLinkedin, faTwitter, faDribbble, faInstagram);
+
 
 const routes = [
   { path: "/", component: HomeView },
@@ -18,5 +30,6 @@ const router = createRouter({
 });
 
 const app = createApp(App);
+app.component("font-awesome-icon", FontAwesomeIcon);
 app.use(router);
 app.mount("#app");
