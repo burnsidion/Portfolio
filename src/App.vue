@@ -1,6 +1,5 @@
 <script setup>
 import NavBar from "./components/NavBar.vue";
-import Footer from "./components/Footer.vue";
 </script>
 
 <template>
@@ -9,7 +8,6 @@ import Footer from "./components/Footer.vue";
     <main class="flex-1 flex flex-col justify-center">
       <router-view />
     </main>
-    <!-- <Footer /> -->
   </div>
 </template>
 

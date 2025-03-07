@@ -5,25 +5,28 @@
       :transition="{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }"
       class="relative flex flex-col items-center gap-4 px-4">
 
-      <BioSection />
+      <BioSection @typewriter-finished="showIconCloud = true" />
 
-      <!-- Desktop: IconCloud in bottom-right corner -->
-      <div class="hidden lg:block absolute bottom-4 right-4">
-        <IconCloud :images="imageUrls" />
-      </div>
+      <transition name="pop-up">
+        <div v-if="showIconCloud" class="hidden lg:block absolute top-[500px] right-[10vw]">
+          <IconCloud :images="imageUrls" />
+        </div>
+      </transition>
 
     </Motion>
   </AuroraBackground>
 </template>
 
-<script setup lang="ts">
+<script setup>
+import { ref } from "vue";
 import { Motion } from "motion-v";
 import AuroraBackground from "../components/AuroraBackground.vue";
 import BioSection from "../components/BioSection.vue";
 import IconCloud from "../components/IconCloud.vue";
 
+const showIconCloud = ref(false);
 
-const slugs = [
+const imageUrls = [
   "typescript",
   "javascript",
   "vuedotjs",
@@ -45,16 +48,25 @@ const slugs = [
   "axios",
   "bandcamp",
   "bitbucket"
-
-];
-
-const imageUrls = slugs.map((slug) => `https://cdn.simpleicons.org/${slug}/${slug}`);
-
+].map(slug => `https://cdn.simpleicons.org/${slug}/${slug}`);
 </script>
 
 <style scoped>
-.fade-enter-active {
-  animation: fadeInScale 1s ease-in-out;
+.pop-up-enter-active {
+  transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.pop-up-enter-from {
+  opacity: 0;
+  transform: translateY(-100vh);
+  filter: blur(1px);
+}
+
+.pop-up-enter-to {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
 }
 
 @keyframes fadeInScale {
