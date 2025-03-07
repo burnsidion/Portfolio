@@ -31,78 +31,82 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import ProfilePic from "../images/profile-pic.jpg";
-import MorphingText from "./MorphingText.vue";
-import Footer from "./Footer.vue";
-import IconCloud from "./IconCloud.vue";
+    import { ref, onMounted } from "vue";
+    import ProfilePic from "../images/profile-pic.jpg";
+    import MorphingText from "./MorphingText.vue";
+    import Footer from "./Footer.vue";
+    import IconCloud from "./IconCloud.vue";
 
-const fullText = ref(
-    "Frontend-focused full-stack software engineer specializing in Vue.js, React, and modern web technologies. Passionate about building sleek, intuitive user interfaces with clean and maintainable codebases. Lets Connect!"
-);
-const displayedText = ref("");
-const showCursor = ref(true);
-const showFooter = ref(false);
+    const fullText = ref(
+        "Frontend-focused full-stack software engineer specializing in Vue.js, React, and modern web technologies. Passionate about building sleek, intuitive user interfaces with clean and maintainable codebases. Lets Connect!"
+    );
+    const displayedText = ref("");
+    const showCursor = ref(true);
+    const showFooter = ref(false);
 
-const showIconCloud = ref(false);
-const showProfilePic = ref(false);
+    const showIconCloud = ref(false);
+    const showProfilePic = ref(false);
 
-const texts = [
-    "Software Engineer",
-    "Frontend",
-    "Backend",
-    "Musician"
-];
+    const texts = [
+        "Software Engineer",
+        "Frontend",
+        "Backend",
+        "Musician"
+    ];
 
-const imageUrls = [
-    "typescript",
-    "javascript",
-    "vuedotjs",
-    "react",
-    "html5",
-    "css3",
-    "nodedotjs",
-    "express",
-    "postgresql",
-    "testinglibrary",
-    "jest",
-    "docker",
-    "git",
-    "jira",
-    "github",
-    "sonarqube",
-    "figma",
-    "dotenv",
-    "axios",
-    "bandcamp",
-    "bitbucket"
-].map(slug => `https://cdn.simpleicons.org/${slug}/${slug}`);
+    const imageUrls = [
+        "typescript",
+        "javascript",
+        "vuedotjs",
+        "react",
+        "html5",
+        "css3",
+        "nodedotjs",
+        "express",
+        "postgresql",
+        "testinglibrary",
+        "jest",
+        "docker",
+        "git",
+        "jira",
+        "github",
+        "sonarqube",
+        "figma",
+        "dotenv",
+        "axios",
+        "bandcamp",
+        "bitbucket"
+    ].map(slug => `https://cdn.simpleicons.org/${slug}/${slug}`);
 
-const typeText = () => {
-    let index = 0;
-    const interval = setInterval(() => {
-        if (index < fullText.value.length) {
-            displayedText.value += fullText.value[index];
-            index++;
-        } else {
-            clearInterval(interval);
-            showCursor.value = false;
-            showFooter.value = true;
-        }
-    }, 40);
-};
+    const typeText = () =>
+    {
+        let index = 0;
+        const interval = setInterval(() =>
+        {
+            if (index < fullText.value.length) {
+                displayedText.value += fullText.value[index];
+                index++;
+            } else {
+                clearInterval(interval);
+                showCursor.value = false;
+                showFooter.value = true;
+            }
+        }, 40);
+    };
 
-onMounted(() => {
-    // Show Profile Picture First
-    showProfilePic.value = true;
+    onMounted(() =>
+    {
+        // Show Profile Picture First
+        showProfilePic.value = true;
 
-    // Delay Icon Sphere by 1 second (adjust delay as needed)
-    setTimeout(() => {
-        showIconCloud.value = true;
-    }, 1000);
+        // Delay Icon Sphere by 1 second (adjust delay as needed)
+        setTimeout(() =>
+        {
+            showIconCloud.value = true;
+        }, 1000);
 
-    typeText();
-});
+        typeText();
+    });
 </script>
 
 <style scoped>
