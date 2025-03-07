@@ -11,16 +11,8 @@ module.exports = {
   },
   rules: {
     'vue/multi-word-component-names': 'off',
-    'prettier/prettier': [
-      'error',
-      {
-        semi: true,
-        singleQuote: true,
-        printWidth: 100,
-        tabWidth: 2,
-        trailingComma: 'es5',
-        bracketSpacing: true,
-      },
-    ],
+    'arrow-body-style': ['error', 'always'],
+    'object-curly-newline': ['error', { consistent: true }],
+    'prettier/prettier': 'off',
   },
 };
