@@ -5,10 +5,11 @@
 body {
   font-family: "Poppins", sans-serif;
   color: var(--text-color);
+  background-color: #1d1e22; 
 }
 
 html {
-  background-color: #1d1e22;
+  background-color: #1d1e22; 
 }
 
 h1,

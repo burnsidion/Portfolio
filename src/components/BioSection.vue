@@ -1,7 +1,7 @@
 <template>
     <transition name="fade" appear>
         <section class="text-center pt-16 w-full flex flex-col items-center mx-auto">
-            <div class="text-5xl w-full font-bold mb-1 font-poppins text-white pb-14 md:pb-0 pt-40">
+            <div class="text-5xl w-full font-bold mb-1 font-poppins text-white pb-14 md:pb-0 pt-28 md:pt-32">
                 <h1 class="font-poppins pb-2">Ian Burnside</h1>
                 <MorphingText :texts="texts" />
             </div>
@@ -38,7 +38,7 @@ import Footer from "./Footer.vue";
 import IconCloud from "./IconCloud.vue";
 
 const fullText = ref(
-    "Frontend-focused full-stack software engineer specializing in Vue.js, React, and modern web technologies. Passionate about building sleek, intuitive user interfaces with clean and maintainable codebases."
+    "Frontend-focused full-stack software engineer specializing in Vue.js, React, and modern web technologies. Passionate about building sleek, intuitive user interfaces with clean and maintainable codebases. Lets Connect!"
 );
 const displayedText = ref("");
 const showCursor = ref(true);
