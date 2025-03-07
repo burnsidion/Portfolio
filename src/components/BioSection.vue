@@ -5,21 +5,24 @@
                 <h1 class="font-poppins pb-2">Ian Burnside</h1>
                 <MorphingText :texts="texts" />
             </div>
-            <img :src="ProfilePic" alt="Ian Burnside"
-                class="w-40 h-40 object-cover rounded-full mx-auto mb-4 border-4 border-gray-700 shadow-lg" />
 
-            <transition name="pop-up">
-                <div v-if="showIconCloudMobile" class="lg:hidden mt-4 w-full flex justify-center relative z-10">
-                    <IconCloud :images="imageUrls" class="w-40 h-40 bg-transparent" />
-                </div>
-            </transition>
+            <!-- Container for Profile + Floating Icons -->
+            <div class="flex flex-col gap-2 items-center h-[400px]">
+                <transition name="drop-in">
+                    <img v-if="showProfilePic" :src="ProfilePic" alt="Ian Burnside"
+                        class="w-40 h-40 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
+                </transition>
+
+                <transition name="drop-in-delay">
+                    <IconCloud v-if="showIconCloud" :images="imageUrls" class="bg-transparent w-56" />
+                </transition>
+            </div>
 
             <div class="relative w-full max-w-2xl mt-10 min-h-[250px] text-center md:text-left pb-3">
                 <p class="text-lg text-gray-400 whitespace-pre-wrap bio-text">
                     {{ displayedText }}<span v-if="showCursor" class="cursor">|</span>
                 </p>
-
-                <transition name="fade">
+                <transition name="slide-fade">
                     <Footer v-if="showFooter" />
                 </transition>
             </div>
@@ -34,15 +37,15 @@ import MorphingText from "./MorphingText.vue";
 import Footer from "./Footer.vue";
 import IconCloud from "./IconCloud.vue";
 
-const emit = defineEmits(["typewriter-finished"]);
-
 const fullText = ref(
     "Frontend-focused full-stack software engineer specializing in Vue.js, React, and modern web technologies. Passionate about building sleek, intuitive user interfaces with clean and maintainable codebases."
 );
 const displayedText = ref("");
 const showCursor = ref(true);
 const showFooter = ref(false);
-const showIconCloudMobile = ref(false);
+
+const showIconCloud = ref(false);
+const showProfilePic = ref(false);
 
 const texts = [
     "Software Engineer",
@@ -85,31 +88,71 @@ const typeText = () => {
             clearInterval(interval);
             showCursor.value = false;
             showFooter.value = true;
-            showIconCloudMobile.value = true;
-            emit("typewriter-finished");
         }
     }, 40);
 };
 
-onMounted(() => typeText());
+onMounted(() => {
+    // Show Profile Picture First
+    showProfilePic.value = true;
+
+    // Delay Icon Sphere by 1 second (adjust delay as needed)
+    setTimeout(() => {
+        showIconCloud.value = true;
+    }, 1000);
+
+    typeText();
+});
 </script>
 
 <style scoped>
-.pop-up-enter-active {
+/* Drop in animation for Profile Picture (NOW FIRST) */
+.drop-in-enter-active {
     transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform, opacity;
 }
 
-.pop-up-enter-from {
+.drop-in-enter-from {
     opacity: 0;
     transform: translateY(-100vh);
     filter: blur(5px);
 }
 
-.pop-up-enter-to {
+.drop-in-enter-to {
     opacity: 1;
     transform: translateY(0);
     filter: blur(0px);
+}
+
+/* Delayed drop-in for Icon Sphere (NOW SECOND) */
+.drop-in-delay-enter-active {
+    transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+}
+
+.drop-in-delay-enter-from {
+    opacity: 0;
+    transform: translateY(-100vh);
+    filter: blur(5px);
+}
+
+.drop-in-delay-enter-to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
+
+.slide-fade-enter-active {
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.slide-fade-enter-from {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.slide-fade-enter-to {
+    opacity: 1;
 }
 
 @keyframes fadeInScale {

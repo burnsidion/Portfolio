@@ -5,13 +5,7 @@
       :transition="{ delay: 0.3, duration: 0.8, ease: 'easeInOut' }"
       class="relative flex flex-col items-center gap-4 px-4">
 
-      <BioSection @typewriter-finished="showIconCloud = true" />
-
-      <transition name="pop-up">
-        <div v-if="showIconCloud" class="hidden lg:block absolute top-[500px] right-[10vw]">
-          <IconCloud :images="imageUrls" />
-        </div>
-      </transition>
+      <BioSection />
 
     </Motion>
   </AuroraBackground>
@@ -22,7 +16,6 @@ import { ref } from "vue";
 import { Motion } from "motion-v";
 import AuroraBackground from "../components/AuroraBackground.vue";
 import BioSection from "../components/BioSection.vue";
-import IconCloud from "../components/IconCloud.vue";
 
 const showIconCloud = ref(false);
 
