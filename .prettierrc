@@ -4,9 +4,12 @@
   "printWidth": 100,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "vueIndentScriptAndStyle": false,
   "plugins": ["prettier-plugin-tailwindcss"],
   "bracketSameLine": false,
   "bracketSpacing": true,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "vueIndentScriptAndStyle": false,
+  "proseWrap": "always",
+  "endOfLine": "lf",
+  "htmlWhitespaceSensitivity": "ignore"
 }

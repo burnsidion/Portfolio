@@ -1,5 +1,7 @@
 <template>
-  <BioSection />
+  <transition name="fade" appear>
+    <BioSection />
+  </transition>
 </template>
 
 <script setup>
@@ -51,6 +53,10 @@ const imageUrls = [
   opacity: 1;
   transform: translateY(0);
   filter: blur(0px);
+}
+
+.fade-enter-active {
+  animation: fadeInScale 1s ease-in-out;
 }
 
 @keyframes fadeInScale {

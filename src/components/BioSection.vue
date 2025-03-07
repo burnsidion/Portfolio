@@ -23,7 +23,7 @@
                     {{ displayedText }}<span v-if="showCursor" class="cursor">|</span>
                 </p>
                 <transition name="slide-fade">
-                    <div class="hidden md:block">
+                    <div v-if="showFooter" class="hidden md:block">
                         <Footer />
                     </div>
                 </transition>
@@ -95,20 +95,15 @@ const typeText = () => {
 };
 
 onMounted(() => {
-    // Show Profile Picture First
     showProfilePic.value = true;
-
-    // Delay Icon Sphere by 1 second (adjust delay as needed)
     setTimeout(() => {
         showIconCloud.value = true;
-    }, 1000);
-
+    }, 1200);
     typeText();
 });
 </script>
 
 <style scoped>
-/* Drop in animation for Profile Picture (NOW FIRST) */
 .drop-in-enter-active {
     transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform, opacity;
@@ -126,7 +121,6 @@ onMounted(() => {
     filter: blur(0px);
 }
 
-/* Delayed drop-in for Icon Sphere (NOW SECOND) */
 .drop-in-delay-enter-active {
     transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform, opacity;

@@ -1,6 +1,6 @@
 <template>
-  <nav class="fixed top-0 left-0 w-full flex justify-between items-center p-14 z-50
-     bg-transparent backdrop-blur-md md:backdrop-blur-none">
+  <nav class="fixed top-0 left-0 w-full flex justify-between items-center
+     p-4 md:p-10 lg:p-14 z-50 bg-transparent backdrop-blur-md md:backdrop-blur-none">
     <div class="text-white text-2xl font-bold">
       <router-link to="/" @click="handleClick">
         <img :src="Pentagram" alt="image of a pentagram"
@@ -70,22 +70,18 @@ const closeMenu = () => {
   isMenuOpen.value = false;
 };
 
-const handleClick = async (event) => {
+const handleClick = async () => {
   if (!isSpinning.value) {
     isSpinning.value = true;
-
-
     await new Promise((resolve) => setTimeout(resolve, 600));
-
     isSpinning.value = false;
   }
 
-
   if (route.path === "/") {
-    event.preventDefault();
-    window.location.reload();
+    router.replace({ path: "/refresh" }).then(() => {
+      router.replace("/");
+    });
   } else {
-
     router.push("/");
   }
 };
