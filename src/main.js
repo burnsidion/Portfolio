@@ -9,18 +9,23 @@ import {
   faDribbble,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
+
+import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+
 import './style.css';
 import App from './App.vue';
 import About from './views/AboutMeView.vue';
 import Projects from './views/ProjectsView.vue';
 import HomeView from './views/HomeView.vue';
+import ContactView from './views/ContactView.vue';
 
-library.add(faGithub, faLinkedin, faTwitter, faDribbble, faInstagram);
+library.add(faGithub, faLinkedin, faTwitter, faDribbble, faInstagram, faGlobe);
 
 const routes = [
   { path: '/', component: HomeView },
   { path: '/about', component: About },
   { path: '/projects', component: Projects },
+  { path: '/contact', component: ContactView}
 ];
 
 const router = createRouter({
