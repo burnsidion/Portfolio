@@ -2,9 +2,7 @@
   <transition name="fade" appear>
     <!-- Ensure full viewport height -->
     <section class="mx-auto flex min-h-screen w-full flex-col items-center pt-16 text-center">
-      <div
-        class="font-poppins mb-1 w-full pb-14 pt-20 text-5xl font-bold text-white md:pb-0 md:pt-24"
-      >
+      <div class="font-poppins mb-1 w-full pb-14 pt-20 text-5xl font-bold text-white md:pb-0 md:pt-24">
         <h1 class="font-poppins pb-2">Ian Burnside</h1>
         <MorphingText :texts="texts" />
       </div>
@@ -12,12 +10,8 @@
       <!-- Container for Profile + Floating Icons -->
       <div class="flex h-[400px] flex-col items-center gap-2">
         <transition name="drop-in">
-          <img
-            v-if="showProfilePic"
-            :src="ProfilePic"
-            alt="Ian Burnside"
-            class="h-40 w-40 rounded-full border-4 border-gray-700 object-cover shadow-lg"
-          />
+          <img v-if="showProfilePic" :src="ProfilePic" alt="Ian Burnside"
+            class="h-40 w-40 rounded-full border-4 border-gray-700 object-cover shadow-lg" />
         </transition>
 
         <transition name="drop-in-delay">
@@ -26,35 +20,28 @@
       </div>
 
       <!-- Bio + Footer Section -->
-      <div class="relative min-h-[250px] w-full max-w-2xl py-2 pb-20 text-center md:text-left">
-        <TextGenerator
-          class="bio-text whitespace-pre-wrap text-lg text-gray-400"
-          :words="fullText"
-          @animationComplete="showFooter = true"
-        />
+      <div class="relative min-h-[250px] w-full max-w-2xl py-2 px-3 pb-20 text-center md:text-left">
+        <TextGenerator class="bio-text whitespace-pre-wrap text-lg text-gray-400" :words="fullText"
+          @animationComplete="showFooter = true" />
 
         <transition name="slide-fade">
           <div v-if="showFooter" class="hidden pt-5 md:block">
-            <router-link
-              to="/about"
-              class="group flex space-x-2 pb-4 text-left text-lg font-medium text-white transition duration-300 hover:text-gray-400"
-            >
+            <router-link to="/about"
+              class="group flex space-x-2 pb-4 text-left text-lg font-medium text-white transition duration-300 hover:text-gray-400">
               <span>See More About Me</span>
               <span class="relative inline-block h-5 w-5">
                 <div class="animate-bounce-horizontal absolute inset-0">➝</div>
               </span>
             </router-link>
-            <Footer class="text-black" />
+            <Footer class="text-gray-300 opacity-70 hover:text-white" />
           </div>
         </transition>
 
         <!-- Mobile version -->
         <transition name="slide-fade">
           <div v-if="showFooter" class="pb-8 pt-5 md:hidden">
-            <router-link
-              to="/about"
-              class="group flex space-x-2 px-5 pb-2 text-left text-lg font-medium text-white transition duration-300 hover:text-gray-400"
-            >
+            <router-link to="/about"
+              class="group flex space-x-2 px-5 pb-2 text-left text-lg font-medium text-white transition duration-300 hover:text-gray-400">
               <span>See More About Me</span>
               <span class="relative inline-block h-5 w-5">
                 <div class="animate-bounce-horizontal absolute inset-0">➝</div>

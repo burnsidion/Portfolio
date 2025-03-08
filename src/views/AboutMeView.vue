@@ -1,6 +1,8 @@
 <template>
   <div class="w-full items-center justify-center px-4 pt-52 text-white">
-    <h2 class="mb-6 text-center text-4xl font-bold">About Me</h2>
+    <div v-if="showHeader" class="flex justify-center mb-6">
+      <HyperText text="About Me" class="text-4xl font-bold" :duration="800" :animate-on-load="true" />
+    </div>
     <TracingBeam class="px-6">
       <div class="relative mx-auto max-w-2xl px-5 pt-4 antialiased">
         <!-- Professional Experience  -->
@@ -29,11 +31,8 @@
           <p class="max-w-prose text-sm leading-relaxed text-gray-300">
             {{ fullText }}
           </p>
-          <a
-            href="https://github.com/burnsidion"
-            target="_blank"
-            class="opacity-70 transition-transform hover:scale-110 hover:opacity-100"
-          >
+          <a href="https://github.com/burnsidion" target="_blank"
+            class="opacity-70 transition-transform hover:scale-110 hover:opacity-100">
             <font-awesome-icon :icon="['fab', 'github']" class="pt-3 text-2xl" />
           </a>
         </div>
@@ -56,19 +55,12 @@
           </p>
 
           <!-- Video Section (YouTube) -->
-          <div
-            v-if="musicEvent.video.includes('youtube.com')"
-            class="relative w-full max-w-2xl md:w-3/4"
-          >
+          <div v-if="musicEvent.video.includes('youtube.com')" class="relative w-full max-w-2xl md:w-3/4">
             <GlowBorder>
-              <iframe
-                class="h-[250px] w-full rounded-lg md:h-[315px]"
-                :src="musicEvent.video"
-                title="YouTube video player"
-                frameborder="0"
+              <iframe class="h-[250px] w-full rounded-lg md:h-[315px]" :src="musicEvent.video"
+                title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-              ></iframe>
+                allowfullscreen></iframe>
             </GlowBorder>
           </div>
           <!-- Imported Videos  -->
@@ -80,18 +72,15 @@
         </div>
         <!-- Footer  -->
         <div class="relative mb-20 flex w-full flex-col items-start pb-16 md:mb-10 md:pb-6">
-          <router-link
-            to="/projects"
-            class="group flex space-x-2 text-left text-lg font-medium transition duration-300 hover:text-gray-400"
-          >
+          <router-link to="/projects"
+            class="group flex space-x-2 text-left text-lg font-medium transition duration-300 hover:text-gray-400">
             <span>Check out my projects</span>
             <span class="relative inline-block h-5 w-5">
               <div class="animate-bounce-horizontal absolute inset-0">➝</div>
             </span>
           </router-link>
           <Footer
-            class="mx-auto hidden w-full max-w-2xl pb-6 pt-6 text-center text-sm text-gray-400 opacity-70 md:block"
-          />
+            class="mx-auto hidden w-full max-w-2xl pb-6 pt-6 text-center text-sm text-gray-300 opacity-70 hover:text-white md:block" />
         </div>
       </div>
     </TracingBeam>
@@ -103,6 +92,8 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import TracingBeam from '../components/TracingBeam.vue';
 import GlowBorder from '../components/GlowBorder.vue';
 import PhotoGallery from '../components/PhotoGallery.vue';
+import HyperText from '../components/HyperText.vue';
+
 import OnlyAshSolo from '../assets/videos/OnlyAshSolo.mp4';
 
 import Aries from '../images/Aries.png';
@@ -196,15 +187,21 @@ const items = [
   },
 ];
 
+const showHeader = ref(false);
+
 const updateWidth = () => {
   windowWidth.value = window.innerWidth;
 };
 
 onMounted(() => {
+  setTimeout(() => {
+    showHeader.value = true;
+  }, 100)
   window.addEventListener('resize', updateWidth);
 });
 
 onUnmounted(() => {
+  showHeader.value = false;
   window.removeEventListener('resize', updateWidth);
 });
 </script>

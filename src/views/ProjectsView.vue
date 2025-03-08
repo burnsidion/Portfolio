@@ -12,7 +12,7 @@
             </p>
           </BoxReveal>
           <BoxReveal color="#6B7280" :duration="0.8">
-            <h2 class="mt-2 text-lg text-gray-300">Here, you can check out some of my work.</h2>
+            <h2 class="mt-2 text-lg text-gray-300">Check out some of my work.</h2>
           </BoxReveal>
           <BoxReveal color="#9CA3AF" :duration="1">
             <div class="mt-4">
@@ -68,7 +68,8 @@
 
       <!-- Footer & Resume Link -->
       <div class="relative flex w-full flex-col items-start pb-12 md:pb-6">
-        <Footer class="mx-20 hidden w-full max-w-2xl pb-6 text-center text-sm text-black md:block" />
+        <Footer
+          class="mx-20 hidden w-full max-w-2xl pb-6 text-center text-sm text-gray-300 opacity-70 hover:text-white md:block" />
         <router-link to="/projects"
           class="group mx-10 flex max-w-2xl space-x-2 pb-6 text-left text-lg font-medium text-white transition duration-300 hover:text-gray-500 md:mx-20">
           <span>Check out my resume</span>
