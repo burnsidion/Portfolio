@@ -61,7 +61,7 @@ const computedY2 = computed(
 
 const spring = useSpring(
   { y1: computedY1.value, y2: computedY2.value },
-  { tension: 80, friction: 26, precision: 0.01 },
+  { tension: 60, friction: 50, precision: 0.01 }
 );
 
 watch(computedY1, (newY1) => {
