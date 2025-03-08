@@ -1,7 +1,7 @@
 <template>
     <transition name="fade" appear>
         <section class="text-center pt-16 w-full flex flex-col items-center mx-auto">
-            <div class="text-5xl w-full font-bold mb-1 font-poppins text-white pb-14 md:pb-0 pt-28 md:pt-32">
+            <div class="text-5xl w-full font-bold mb-1 font-poppins text-white pb-14 md:pb-0 pt-20 md:pt-24">
                 <h1 class="font-poppins pb-2">Ian Burnside</h1>
                 <MorphingText :texts="texts" />
             </div>
@@ -19,11 +19,17 @@
             </div>
 
             <div class="relative w-full max-w-2xl mt-10 min-h-[250px] text-center md:text-left pb-3">
-                <p class="text-lg text-gray-400 whitespace-pre-wrap bio-text">
-                    {{ displayedText }}<span v-if="showCursor" class="cursor">|</span>
-                </p>
+                <TextGenerator class="text-lg text-gray-400 whitespace-pre-wrap bio-text" :words="fullText"
+                    @animationComplete="showFooter = true" />
                 <transition name="slide-fade">
-                    <div v-if="showFooter" class="hidden md:block">
+                    <div v-if="showFooter" class="hidden md:block pt-5">
+                        <router-link to="/about"
+                            class="text-lg text-white font-medium text-left hover:text-gray-400 transition duration-300 flex space-x-2 group">
+                            <span>See More About Me</span>
+                            <span class="inline-block w-5 h-5 relative">
+                                <div class="absolute inset-0 animate-bounce-horizontal">➝</div>
+                            </span>
+                        </router-link>
                         <Footer />
                     </div>
                 </transition>
@@ -38,10 +44,12 @@ import ProfilePic from "../images/profile-pic.jpg";
 import MorphingText from "./MorphingText.vue";
 import Footer from "./Footer.vue";
 import IconCloud from "./IconCloud.vue";
+import TextGenerator from "./TextGenerator.vue";
 
 const fullText = ref(
     "Frontend-focused full-stack software engineer specializing in Vue.js, React, and modern web technologies. Passionate about building sleek, intuitive user interfaces with clean and maintainable codebases."
 );
+
 const displayedText = ref("");
 const showCursor = ref(true);
 const showFooter = ref(false);
@@ -80,26 +88,12 @@ const imageUrls = [
     "bitbucket"
 ].map(slug => `https://cdn.simpleicons.org/${slug}/${slug}`);
 
-const typeText = () => {
-    let index = 0;
-    const interval = setInterval(() => {
-        if (index < fullText.value.length) {
-            displayedText.value += fullText.value[index];
-            index++;
-        } else {
-            clearInterval(interval);
-            showCursor.value = false;
-            showFooter.value = true;
-        }
-    }, 40);
-};
 
 onMounted(() => {
     showProfilePic.value = true;
     setTimeout(() => {
         showIconCloud.value = true;
     }, 1200);
-    typeText();
 });
 </script>
 
@@ -171,5 +165,24 @@ onMounted(() => {
     50% {
         opacity: 0;
     }
+}
+
+@keyframes bounce-horizontal {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-bounce-horizontal {
+    display: inline-block;
+    animation: bounce-horizontal 1s infinite ease-in-out;
 }
 </style>

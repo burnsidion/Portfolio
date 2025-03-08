@@ -11,13 +11,16 @@
 
     <!-- Desktop Navigation -->
     <ul class="hidden md:flex space-x-6 text-white">
-      <router-link to="/about" class="text-lg font-medium hover:text-gray-400 transition duration-300">
+      <router-link to="/about"
+        class="relative text-lg font-medium hover:text-gray-400 transition duration-300 after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 after:origin-center hover:after:w-full hover:after:left-0">
         About
       </router-link>
-      <router-link to="/projects" class="text-lg font-medium hover:text-gray-400 transition duration-300">
+      <router-link to="/projects"
+        class="relative text-lg font-medium hover:text-gray-400 transition duration-300 after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 after:origin-center hover:after:w-full hover:after:left-0">
         Projects
       </router-link>
-      <router-link to="/conact" class="text-lg font-medium hover:text-gray-400 transition duration-300">
+      <router-link to="/contact"
+        class="relative text-lg font-medium hover:text-gray-400 transition duration-300 after:absolute after:left-1/2 after:bottom-0 after:h-[2px] after:w-0 after:bg-white after:transition-all after:duration-300 after:origin-center hover:after:w-full hover:after:left-0">
         Contact
       </router-link>
     </ul>
