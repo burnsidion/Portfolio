@@ -19,7 +19,7 @@ const route = useRoute();
             <router-view />
           </main>
           <div class="fixed bottom-0 w-full bg-black bg-opacity-85 py-3 md:hidden">
-            <Footer />
+            <Footer class="text-gray-100 hover:text-white" />
           </div>
         </Motion>
       </AuroraBackground>

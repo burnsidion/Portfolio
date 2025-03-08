@@ -10,7 +10,7 @@
         <Motion
           :animate="{
             backgroundColor:
-              scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(16, 185, 129, 1)',
+              scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 1)',
             borderColor: scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(5, 150, 105, 1)',
           }"
           class="size-2 rounded-full border border-neutral-300 bg-white"
