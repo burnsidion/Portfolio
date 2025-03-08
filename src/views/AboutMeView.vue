@@ -4,6 +4,7 @@
         <TracingBeam class="px-6">
             <div class="relative mx-auto max-w-2xl pt-4 antialiased px-5">
 
+                <!-- Professional Experience  -->
                 <div v-for="(job, index) in professionalExperience" :key="`job-${index}`" class="mb-10">
                     <span class="inline-block bg-black text-white text-sm px-4 py-1 rounded-full">
                         {{ job.badge }}
@@ -20,6 +21,7 @@
                     </div>
                 </div>
 
+                <!-- Personal Section  -->
                 <div>
                     <span class="inline-block bg-black text-white text-sm px-4 py-1 rounded-full">
                         Personal
@@ -36,9 +38,10 @@
                     </a>
                 </div>
 
-
+                <!-- Photo Gallery Component  -->
                 <PhotoGallery v-if="windowWidth >= 768" :items="items" />
 
+                <!-- Music Events Section  -->
                 <div v-for="(musicEvent, index) in musicTimeline" :key="`music-${index}`" class="py-10">
                     <span class="inline-block bg-black text-white text-sm px-4 py-1 rounded-full">
                         {{ musicEvent.badge }}
@@ -52,6 +55,7 @@
                         {{ desc }}
                     </p>
 
+                    <!-- Video Section (YouTube) -->
                     <div v-if="musicEvent.video.includes('youtube.com')" class="relative w-full md:w-3/4 max-w-2xl">
                         <GlowBorder>
                             <iframe class="w-full h-[250px] md:h-[315px] rounded-lg" :src="musicEvent.video"
@@ -61,7 +65,7 @@
                             </iframe>
                         </GlowBorder>
                     </div>
-
+                    <!-- Imported Videos  -->
                     <GlowBorder v-else class="w-full md:w-3/4 max-w-2xl">
                         <video controls class="w-full rounded-lg border-2 border-gray-600">
                             <source :src="musicEvent.video" type="video/mp4" />
@@ -70,6 +74,7 @@
 
 
                 </div>
+                <!-- Footer  -->
                 <div class="flex flex-col items-start relative mb-20 md:mb-10 pb-16 md:pb-6 w-full">
                     <router-link to="/projects"
                         class="text-lg font-medium text-left hover:text-gray-400 transition duration-300 flex space-x-2 group">
@@ -104,6 +109,10 @@ import Band from "../images/band.png";
 
 import Footer from "../components/Footer.vue";
 
+const fullText = ref(
+    "I have a deep passion for coding, music, and software engineering. Before diving into web development, I spent years playing guitar in bands and recording my own music..."
+);
+
 const professionalExperience = ref([
     {
         title: "Software Engineer, RealTruck",
@@ -134,6 +143,29 @@ const professionalExperience = ref([
     }
 ]);
 
+const musicTimeline = ref([
+    {
+        title: "Apotheon - 'Mechanically Consumed'",
+        badge: "Band",
+        video: "https://www.youtube.com/embed/ATFxLFDcv5g",
+        description: [
+            "Music video for my last band, Apotheon."
+        ]
+    },
+    {
+        title: "Cover: 'Only Ash Remains' - Necrophagist",
+        badge: "Music",
+        video: OnlyAshSolo,
+        description: [
+            "A technical death metal cover of one of my favorite songs."
+        ]
+    }
+]);
+
+const showCursor = ref(true);
+
+const windowWidth = ref(window.innerWidth);
+
 const items = [
     {
         src: Aries
@@ -160,33 +192,6 @@ const items = [
         src: Band
     }
 ]
-
-const fullText = ref(
-    "I have a deep passion for coding, music, and software engineering. Before diving into web development, I spent years playing guitar in bands and recording my own music..."
-);
-
-const showCursor = ref(true);
-
-const musicTimeline = ref([
-    {
-        title: "Apotheon - 'Mechanically Consumed'",
-        badge: "Band",
-        video: "https://www.youtube.com/embed/ATFxLFDcv5g",
-        description: [
-            "Music video for my last band, Apotheon."
-        ]
-    },
-    {
-        title: "Cover: 'Only Ash Remains' - Necrophagist",
-        badge: "Music",
-        video: OnlyAshSolo,
-        description: [
-            "A technical death metal cover of one of my favorite songs."
-        ]
-    }
-]);
-
-const windowWidth = ref(window.innerWidth);
 
 const updateWidth = () => {
     windowWidth.value = window.innerWidth;

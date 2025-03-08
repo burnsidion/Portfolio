@@ -1,15 +1,15 @@
 <template>
-    <div :class="cn('leading-snug tracking-wide', props.class)">
-        <div ref="scope">
-            <span v-for="(word, idx) in wordsArray" :key="word + idx" class="inline-block" :style="spanStyle">
-                {{ word }}&nbsp;
-            </span>
-        </div>
+  <div :class="cn('leading-snug tracking-wide', props.class)">
+    <div ref="scope">
+      <span v-for="(word, idx) in wordsArray" :key="word + idx" class="inline-block" :style="spanStyle">
+        {{ word }}&nbsp;
+      </span>
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { computed, type HTMLAttributes, onMounted, ref, defineEmits } from "vue";
+import { computed, type HTMLAttributes, onMounted, ref } from "vue";
 import { cn } from "../lib/utils";
 
 const props = withDefaults(
