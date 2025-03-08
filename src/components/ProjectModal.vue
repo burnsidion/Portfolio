@@ -1,15 +1,15 @@
 <template>
     <transition name="slide-fade">
-        <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-50">
+        <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-70">
             <!-- Modal Content Wrapper -->
             <div
-                class="relative h-full w-full max-w-lg transform bg-gray-900 text-white transition-transform duration-500">
+                class="relative h-full w-full max-w-lg transform bg-gray-900 text-gray-300 transition-transform duration-500">
                 <!-- Close Button -->
-                <button @click="closeModal" class="absolute right-4 top-4 text-gray-400 hover:text-white z-20">
+                <button @click="closeModal" class="absolute right-4 top-4 text-gray-400 text-2xl hover:text-white z-20">
                     ✕
                 </button>
                 <!-- Lamp Effect (Fixed at the top) -->
-                <LampEffect class="absolute top-12 w-full h-full z-10">
+                <LampEffect class="absolute top-14 w-full h-full z-10">
                     <div class="p-6 relative z-20">
 
                         <!-- Project Content -->
@@ -39,18 +39,24 @@
 
                         <!-- Website Link -->
                         <div class="mt-6">
-                            <h3 class="text-lg font-semibold">Website</h3>
+                            <div class="flex gap-2 pb-2">
+                                <h3 class="text-lg font-semibold">Website</h3>
+                                <font-awesome-icon :icon="['fas', 'globe']" class="text-2xl"/>
+                            </div>
                             <a :href="project.liveLink" target="_blank" rel="noopener noreferrer"
-                                class="text-blue-400 hover:underline">
+                                class="text-gray-200 hover:underline">
                                 {{ project.liveLink }}
                             </a>
                         </div>
 
                         <!-- GitHub Link -->
                         <div class="mt-4">
-                            <h3 class="text-lg font-semibold">GitHub</h3>
+                            <div class="flex gap-2 pb-2">
+                                <h3 class="text-lg font-semibold">GitHub</h3>
+                                <font-awesome-icon :icon="['fab', 'github']" class="text-2xl" />
+                            </div>
                             <a :href="project.repoLink" target="_blank" rel="noopener noreferrer"
-                                class="text-blue-400 hover:underline">
+                                class="text-gray-200 hover:underline">
                                 {{ project.repoLink }}
                             </a>
                         </div>
@@ -62,7 +68,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue';
 import LampEffect from '../components/LampEffect.vue';
 const props = defineProps({
     project: Object,
