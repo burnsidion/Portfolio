@@ -5,41 +5,43 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { Motion } from "motion-v";
-import AuroraBackground from "../components/AuroraBackground.vue";
-import BioSection from "../components/BioSection.vue";
+import { ref } from 'vue';
+import { Motion } from 'motion-v';
+import AuroraBackground from '../components/AuroraBackground.vue';
+import BioSection from '../components/BioSection.vue';
 
 const showIconCloud = ref(false);
 
 const imageUrls = [
-  "typescript",
-  "javascript",
-  "vuedotjs",
-  "react",
-  "html5",
-  "css3",
-  "nodedotjs",
-  "express",
-  "postgresql",
-  "testinglibrary",
-  "jest",
-  "docker",
-  "git",
-  "jira",
-  "github",
-  "sonarqube",
-  "figma",
-  "dotenv",
-  "axios",
-  "bandcamp",
-  "bitbucket"
-].map(slug => `https://cdn.simpleicons.org/${slug}/${slug}`);
+  'typescript',
+  'javascript',
+  'vuedotjs',
+  'react',
+  'html5',
+  'css3',
+  'nodedotjs',
+  'express',
+  'postgresql',
+  'testinglibrary',
+  'jest',
+  'docker',
+  'git',
+  'jira',
+  'github',
+  'sonarqube',
+  'figma',
+  'dotenv',
+  'axios',
+  'bandcamp',
+  'bitbucket',
+].map((slug) => `https://cdn.simpleicons.org/${slug}/${slug}`);
 </script>
 
 <style scoped>
 .pop-up-enter-active {
-  transition: opacity 1.2s ease-out, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+    opacity 1.2s ease-out,
+    transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity;
 }
 
