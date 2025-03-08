@@ -1,6 +1,7 @@
 <template>
     <transition name="fade" appear>
-        <section class="text-center pt-16 w-full flex flex-col items-center mx-auto">
+        <!-- Ensure full viewport height -->
+        <section class="text-center pt-16 w-full flex flex-col items-center mx-auto min-h-screen">
             <div class="text-5xl w-full font-bold mb-1 font-poppins text-white pb-14 md:pb-0 pt-20 md:pt-24">
                 <h1 class="font-poppins pb-2">Ian Burnside</h1>
                 <MorphingText :texts="texts" />
@@ -18,19 +19,34 @@
                 </transition>
             </div>
 
-            <div class="relative w-full max-w-2xl mt-10 min-h-[250px] text-center md:text-left pb-3">
+            <!-- Bio + Footer Section -->
+            <div class="relative w-full max-w-2xl min-h-[250px] text-center md:text-left pb-20 py-2">
                 <TextGenerator class="text-lg text-gray-400 whitespace-pre-wrap bio-text" :words="fullText"
                     @animationComplete="showFooter = true" />
+
                 <transition name="slide-fade">
                     <div v-if="showFooter" class="hidden md:block pt-5">
                         <router-link to="/about"
-                            class="text-lg text-white font-medium text-left hover:text-gray-400 transition duration-300 flex space-x-2 group">
+                            class="text-lg text-white font-medium text-left hover:text-gray-400 transition duration-300 flex space-x-2 group pb-4">
                             <span>See More About Me</span>
                             <span class="inline-block w-5 h-5 relative">
                                 <div class="absolute inset-0 animate-bounce-horizontal">➝</div>
                             </span>
                         </router-link>
                         <Footer />
+                    </div>
+                </transition>
+
+                <!-- Mobile version -->
+                <transition name="slide-fade">
+                    <div v-if="showFooter" class="md:hidden pt-5 pb-8">
+                        <router-link to="/about"
+                            class="text-lg text-white font-medium text-left hover:text-gray-400 transition duration-300 flex space-x-2 group pb-2 px-5">
+                            <span>See More About Me</span>
+                            <span class="inline-block w-5 h-5 relative">
+                                <div class="absolute inset-0 animate-bounce-horizontal">➝</div>
+                            </span>
+                        </router-link>
                     </div>
                 </transition>
             </div>
