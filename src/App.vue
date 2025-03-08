@@ -18,7 +18,7 @@ const route = useRoute();
           <main class="flex-1 flex flex-col justify-center">
             <router-view />
           </main>
-          <div class="md:hidden fixed bottom-0 w-full bg-black bg-opacity-90 py-3">
+          <div class="md:hidden fixed bottom-0 w-full bg-black bg-opacity-85 py-3">
             <Footer />
           </div>
         </Motion>

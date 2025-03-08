@@ -1,25 +1,85 @@
 <template>
-    <div class="w-full items-center justify-center px-8 pt-52 text-white">
+    <div class="w-full items-center justify-center px-4 pt-52 text-white">
+        <h2 class="text-4xl font-bold mb-6 text-center">About Me</h2>
         <TracingBeam class="px-6">
-            <div class="relative mx-auto max-w-2xl pt-4 antialiased">
-                <div v-for="(item, index) in dummyContent" :key="`content-${index}`" class="mb-10">
+            <div class="relative mx-auto max-w-2xl pt-4 antialiased px-5">
+
+                <div v-for="(job, index) in professionalExperience" :key="`job-${index}`" class="mb-10">
                     <span class="inline-block bg-black text-white text-sm px-4 py-1 rounded-full">
-                        {{ item.badge }}
+                        {{ job.badge }}
                     </span>
 
-                    <p :class="['mb-4 text-xl']">
-                        {{ item.title }}
+                    <p class="my-4 text-lg font-bold">
+                        {{ job.title }}
                     </p>
 
-                    <div class="prose prose-sm dark:prose-invert text-sm">
-                        <img v-if="item.image" :src="item.image" alt="blog thumbnail"
-                            class="mb-10 rounded-lg object-cover" />
-                        <div>
-                            <p v-for="(paragraph, idx) in item.description" :key="`desc-${idx}`">
-                                {{ paragraph }}
-                            </p>
-                        </div>
+                    <div class="text-sm text-gray-300 leading-relaxed break-words">
+                        <p v-for="(desc, idx) in job.description" :key="`desc-${idx}`">
+                            {{ desc }}
+                        </p>
                     </div>
+                </div>
+
+                <div>
+                    <span class="inline-block bg-black text-white text-sm px-4 py-1 rounded-full">
+                        Personal
+                    </span>
+                    <p class="my-4 text-lg font-bold">
+                        A Passion for Code & Community
+                    </p>
+                    <p class="text-sm text-gray-300 max-w-prose leading-relaxed">
+                        {{ fullText }}
+                    </p>
+                    <a href="https://github.com/burnsidion" target="_blank"
+                        class="opacity-70 hover:opacity-100 transition-transform hover:scale-110">
+                        <font-awesome-icon :icon="['fab', 'github']" class="text-2xl pt-3" />
+                    </a>
+                </div>
+
+
+                <PhotoGallery v-if="windowWidth >= 768" :items="items" />
+
+                <div v-for="(musicEvent, index) in musicTimeline" :key="`music-${index}`" class="py-10">
+                    <span class="inline-block bg-black text-white text-sm px-4 py-1 rounded-full">
+                        {{ musicEvent.badge }}
+                    </span>
+
+                    <p class="my-4 text-lg font-bold">
+                        {{ musicEvent.title }}
+                    </p>
+
+                    <p v-for="(desc, idx) in musicEvent.description" :key="`desc-${idx}`" class="pb-3">
+                        {{ desc }}
+                    </p>
+
+                    <div v-if="musicEvent.video.includes('youtube.com')" class="relative w-full md:w-3/4 max-w-2xl">
+                        <GlowBorder>
+                            <iframe class="w-full h-[250px] md:h-[315px] rounded-lg" :src="musicEvent.video"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </GlowBorder>
+                    </div>
+
+                    <GlowBorder v-else class="w-full md:w-3/4 max-w-2xl">
+                        <video controls class="w-full rounded-lg border-2 border-gray-600">
+                            <source :src="musicEvent.video" type="video/mp4" />
+                        </video>
+                    </GlowBorder>
+
+
+                </div>
+                <div class="flex flex-col items-start relative mb-20 md:mb-10 pb-16 md:pb-6 w-full">
+                    <router-link to="/projects"
+                        class="text-lg font-medium text-left hover:text-gray-400 transition duration-300 flex space-x-2 group">
+                        <span>Check out my projects</span>
+                        <span class="inline-block w-5 h-5 relative">
+                            <div class="absolute inset-0 animate-bounce-horizontal">➝</div>
+                        </span>
+                    </router-link>
+                    <Footer
+                        class="hidden md:block w-full max-w-2xl mx-auto pt-6 pb-6 text-center text-gray-400 opacity-70 text-sm" />
                 </div>
             </div>
         </TracingBeam>
@@ -28,100 +88,121 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import TracingBeam from "../components/TracingBeam.vue";
+import GlowBorder from "../components/GlowBorder.vue";
+import PhotoGallery from "../components/PhotoGallery.vue";
+import OnlyAshSolo from "../assets/videos/OnlyAshSolo.mp4";
+
 import Aries from "../images/Aries.png";
 import Ibby from "../images/Ibby.png";
 import Vader from "../images/Vader.png";
-import OnlyAshSolo from "../assets/videos/OnlyAshSolo.mp4";
-import TracingBeam from "../components/TracingBeam.vue";
+import Intense from "../images/intense.png";
+import Show from "../images/show.png";
+import Trailside from "../images/trailside.png";
+import Shadows from "../images/shadows.png";
+import Band from "../images/band.png";
 
+import Footer from "../components/Footer.vue";
+
+const professionalExperience = ref([
+    {
+        title: "Software Engineer, RealTruck",
+        badge: "RealTruck",
+        description: [
+            "Migrated components to Vue 3 Composition API, enhancing maintainability and performance.",
+            "Developed responsive UI components with Tailwind CSS, improving mobile usability by 20%.",
+            "Created technical documentation to streamline onboarding and coding standards.",
+            "Rebuilt cart component to render a better organized layout, using CSS Grid"
+        ]
+    },
+    {
+        title: "Associate Software Engineer, S&P Global",
+        badge: "S&P Global",
+        description: [
+            "Developed reusable Vue.js components for a RBC's online trading platform with 10M daily users.",
+            "Led WCAG accessibility initiatives, improving usability for screen readers.",
+            "Authored internal guides and tutorials for Vue 3 adoption."
+        ]
+    },
+    {
+        title: "My Education",
+        badge: "Education",
+        description: [
+            "Galvanize | Full-Stack Web Development (2018)",
+            "University of Colorado, Boulder | B.A. in Humanities (2012)"
+        ]
+    }
+]);
+
+const items = [
+    {
+        src: Aries
+    },
+    {
+        src: Vader
+    },
+    {
+        src: Ibby
+    },
+    {
+        src: Intense
+    },
+    {
+        src: Show
+    },
+    {
+        src: Trailside
+    },
+    {
+        src: Shadows
+    },
+    {
+        src: Band
+    }
+]
 
 const fullText = ref(
     "I have a deep passion for coding, music, and software engineering. Before diving into web development, I spent years playing guitar in bands and recording my own music..."
 );
 
-const musicText = ref(
-    "You can find a music video for my last band 'Apotheon' below, as well as a cover of one of my favorite songs, 'Only Ash Remains' by Necrophagist."
-);
-
-const displayedText = ref("");
 const showCursor = ref(true);
 
-const displayedMusicText = ref("");
-const showMusicCursor = ref(true);
-
-const intervals = [];
-
-const dummyContent = [
+const musicTimeline = ref([
     {
-        title: "Lorem Ipsum Dolor Sit Amet",
+        title: "Apotheon - 'Mechanically Consumed'",
+        badge: "Band",
+        video: "https://www.youtube.com/embed/ATFxLFDcv5g",
         description: [
-            "The power of first impressions cannot be underestimated, and the gateway to capitalizing on them lies in exceptional website design. An outstanding website transcends mere aesthetics and extends its influence to encompass seamless functionality and user-friendly navigation. Drawing upon my expertise as a seasoned programmer, I possess the unique ability to tackle intricate technical challenges while crafting websites that exude sleekness and visual allure. Moreover, my extensive knowledge of recognized technical standards is complemented by my proficiency in modern building practices, ensuring that every aspect of your website is finely tuned to perfection."
-        ],
-        badge: "Vue",
+            "Music video for my last band, Apotheon."
+        ]
     },
     {
-        title: "Lorem Ipsum Dolor Sit Amet",
+        title: "Cover: 'Only Ash Remains' - Necrophagist",
+        badge: "Music",
+        video: OnlyAshSolo,
         description: [
-            "Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.",
-            "In dolore veniam excepteur eu est et sunt velit. Ipsum sint esse veniam fugiat esse qui sint ad sunt reprehenderit do qui proident reprehenderit. Laborum exercitation aliqua reprehenderit ea sint cillum ut mollit.",
-        ],
-        badge: "Nuxt",
-        image:
-            "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=3540&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-        title: "Lorem Ipsum Dolor Sit Amet",
-        description: [
-            "Ex irure dolore veniam ex velit non aute nisi labore ipsum occaecat deserunt cupidatat aute. Enim cillum dolor et nulla sunt exercitation non voluptate qui aliquip esse tempor. Ullamco ut sunt consectetur sint qui qui do do qui do. Labore laborum culpa magna reprehenderit ea velit id esse adipisicing deserunt amet dolore. Ipsum occaecat veniam commodo proident aliqua id ad deserunt dolor aliquip duis veniam sunt.",
-        ],
-        badge: "Inspira UI",
-        image:
-            "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&q=80&w=3506&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-];
+            "A technical death metal cover of one of my favorite songs."
+        ]
+    }
+]);
 
-const typeText = (textRef, displayedRef, cursorRef) => {
-    let index = 0;
-    const interval = setInterval(() => {
-        if (index < textRef.value.length) {
-            displayedRef.value += textRef.value[index];
-            index++;
-        } else {
-            clearInterval(interval);
-            cursorRef.value = false;
-        }
-    }, 40);
+const windowWidth = ref(window.innerWidth);
 
-    intervals.push(interval);
+const updateWidth = () => {
+    windowWidth.value = window.innerWidth;
 };
 
 onMounted(() => {
-    typeText(fullText, displayedText, showCursor);
-    typeText(musicText, displayedMusicText, showMusicCursor);
+    window.addEventListener("resize", updateWidth);
 });
 
 onUnmounted(() => {
-    intervals.forEach(clearInterval);
+    window.removeEventListener("resize", updateWidth);
 });
+
 </script>
 
 <style scoped>
-.fade-enter-active {
-    animation: fadeInScale 1s ease-in-out;
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 .cursor {
     animation: blink 1s infinite;
 }
@@ -130,5 +211,24 @@ onUnmounted(() => {
     50% {
         opacity: 0;
     }
+}
+
+@keyframes bounce-horizontal {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.animate-bounce-horizontal {
+    display: inline-block;
+    animation: bounce-horizontal 1s infinite ease-in-out;
 }
 </style>
