@@ -20,7 +20,6 @@ h5 {
   font-family: 'Audiowide', sans-serif;
 }
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;

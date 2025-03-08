@@ -4,7 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'plugin:prettier/recommended'],
+  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -12,6 +12,7 @@ module.exports = {
   rules: {
     'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
     'vue/no-multiple-template-root': 'off',
+    semi: ['error', 'always'],
     'vue/html-indent': ['error', 2],
     'vue/singleline-html-element-content-newline': 'off',
     'vue/max-attributes-per-line': [

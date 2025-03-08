@@ -1,21 +1,50 @@
 <template>
-  <div ref="tracingBeamRef" :class="cn('relative w-full max-w-4xl mx-auto h-full', $props.class)">
+  <div ref="tracingBeamRef" :class="cn('relative mx-auto h-full w-full max-w-4xl', $props.class)">
     <div class="absolute -left-4 top-3 md:-left-12">
-      <div :style="{
+      <div
+        :style="{
           boxShadow: scrollYProgress > 0 ? 'none' : 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
-        }" class="border-netural-200 ml-[27px] flex size-4 items-center justify-center rounded-full border shadow-sm">
-        <Motion :animate="{
-            backgroundColor: scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(16, 185, 129, 1)',
-            borderColor: scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(5, 150, 105, 1)'
-          }" class="size-2 rounded-full border border-neutral-300 bg-white" />
+        }"
+        class="border-netural-200 ml-[27px] flex size-4 items-center justify-center rounded-full border shadow-sm"
+      >
+        <Motion
+          :animate="{
+            backgroundColor:
+              scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(16, 185, 129, 1)',
+            borderColor: scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(5, 150, 105, 1)',
+          }"
+          class="size-2 rounded-full border border-neutral-300 bg-white"
+        />
       </div>
-      <svg :viewBox="`0 0 20 ${svgHeight}`" width="20" :height="svgHeight" class="ml-4 block" aria-hidden="true">
-        <path :d="`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`" fill="none" stroke="#9091A0"
-          stroke-opacity="0.16"></path>
-        <path :d="`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`" fill="none" stroke="url(#gradient)"
-          stroke-width="1.25" class="motion-reduce:hidden"></path>
+      <svg
+        :viewBox="`0 0 20 ${svgHeight}`"
+        width="20"
+        :height="svgHeight"
+        class="ml-4 block"
+        aria-hidden="true"
+      >
+        <path
+          :d="`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`"
+          fill="none"
+          stroke="#9091A0"
+          stroke-opacity="0.16"
+        ></path>
+        <path
+          :d="`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`"
+          fill="none"
+          stroke="url(#gradient)"
+          stroke-width="1.25"
+          class="motion-reduce:hidden"
+        ></path>
         <defs>
-          <linearGradient id="gradient" gradientUnits="userSpaceOnUse" x1="0" x2="0" :y1="spring.y1" :y2="spring.y2">
+          <linearGradient
+            id="gradient"
+            gradientUnits="userSpaceOnUse"
+            x1="0"
+            x2="0"
+            :y1="spring.y1"
+            :y2="spring.y2"
+          >
             <stop stop-color="#18CCFC" stop-opacity="0"></stop>
             <stop stop-color="#18CCFC"></stop>
             <stop offset="0.325" stop-color="#6344F5"></stop>
@@ -31,10 +60,10 @@
 </template>
 
 <script lang="ts" setup>
-import { cn } from "../lib/utils";
-import { Motion } from "motion-v";
-import { onMounted, onUnmounted, watch, ref, computed } from "vue";
-import { useSpring } from "vue-use-spring";
+import { cn } from '../lib/utils';
+import { Motion } from 'motion-v';
+import { onMounted, onUnmounted, watch, ref, computed } from 'vue';
+import { useSpring } from 'vue-use-spring';
 
 defineProps({
   class: String,
@@ -50,13 +79,13 @@ const scrollPercentage = ref(0);
 const computedY1 = computed(
   () =>
     mapRange(scrollYProgress.value, 0, 0.8, scrollYProgress.value, svgHeight.value) *
-    (1.4 - scrollPercentage.value),
+    (1.4 - scrollPercentage.value)
 );
 
 const computedY2 = computed(
   () =>
     mapRange(scrollYProgress.value, 0, 1, scrollYProgress.value, svgHeight.value - 500) *
-    (1.4 - scrollPercentage.value),
+    (1.4 - scrollPercentage.value)
 );
 
 const spring = useSpring(
@@ -85,8 +114,8 @@ function updateScrollYProgress() {
 }
 
 onMounted(() => {
-  window.addEventListener("scroll", updateScrollYProgress);
-  window.addEventListener("resize", updateScrollYProgress);
+  window.addEventListener('scroll', updateScrollYProgress);
+  window.addEventListener('resize', updateScrollYProgress);
   updateScrollYProgress();
 
   const resizeObserver = new ResizeObserver(function () {
@@ -99,8 +128,8 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  tracingBeamRef.value?.removeEventListener("scroll", updateScrollYProgress);
-  window.removeEventListener("resize", updateScrollYProgress);
+  tracingBeamRef.value?.removeEventListener('scroll', updateScrollYProgress);
+  window.removeEventListener('resize', updateScrollYProgress);
 });
 
 function updateSVGHeight() {
@@ -114,7 +143,7 @@ function mapRange(
   inMin: number,
   inMax: number,
   outMin: number,
-  outMax: number,
+  outMax: number
 ): number {
   return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
 }
