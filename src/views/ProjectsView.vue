@@ -70,7 +70,7 @@
       <div class="relative flex w-full flex-col items-start pb-12 md:pb-6">
         <Footer
           class="mx-20 hidden w-full max-w-2xl pb-6 text-center text-sm text-gray-300 opacity-70 hover:text-white md:block" />
-        <router-link to="/projects"
+        <router-link to="/resume"
           class="group mx-10 flex max-w-2xl space-x-2 pb-6 text-left text-lg font-medium text-white transition duration-300 hover:text-gray-500 md:mx-20">
           <span>Check out my resume</span>
           <span class="relative inline-block h-5 w-5">
