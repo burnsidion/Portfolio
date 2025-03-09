@@ -178,7 +178,16 @@ onMounted(() => {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  function animate() {
+  let lastFrameTime = performance.now();
+
+  function animate(timestamp) {
+    if (timestamp - lastFrameTime < 16) {
+      animationFrameRef.value = requestAnimationFrame(animate);
+      return;
+    }
+
+    lastFrameTime = timestamp;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const centerX = canvas.width / 2;
@@ -188,7 +197,7 @@ onMounted(() => {
     const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
     const distance = Math.sqrt(dx * dx + dy * dy);
 
-    const speed = 0.002 + (distance / maxDistance) * 0.008; // Slightly reduced speed for smoother rotation
+    const speed = 0.002 + (distance / maxDistance) * 0.006;
 
     if (targetRotation.value) {
       const { startX, startY, x: tx, y: ty, startTime, duration } = targetRotation.value;
