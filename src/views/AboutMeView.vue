@@ -1,135 +1,239 @@
 <template>
-    <transition name="fade" appear>
-        <div class="min-h-screen bg-[#1d1e22] text-[#fff1e7] mt-20 px-4">
-            <!-- About Me Header -->
-            <h2 class="text-4xl font-bold mb-6 text-center">About Me</h2>
+  <div class="w-full items-center justify-center px-4 pt-52 text-white">
+    <div v-if="showHeader" class="flex justify-center mb-6">
+      <HyperText text="About Me" class="text-4xl font-bold" :duration="800" :animate-on-load="true" />
+    </div>
+    <TracingBeam class="px-6">
+      <div class="relative mx-auto max-w-2xl px-5 pt-4 antialiased">
+        <!-- Professional Experience  -->
+        <div v-for="(job, index) in professionalExperience" :key="`job-${index}`" class="mb-10">
+          <span class="inline-block rounded-full bg-black px-4 py-1 text-sm text-white">
+            {{ job.badge }}
+          </span>
 
-            <!-- Typewriter Bio -->
-            <div class="min-h-[100px]">
-                <p class="text-xl text-gray-300 text-center max-w-3xl mx-auto animate-typing leading-relaxed">
-                    {{ displayedText }}<span v-if="showCursor" class="cursor">|</span>
-                </p>
-            </div>
+          <p class="my-4 text-lg font-bold">
+            {{ job.title }}
+          </p>
 
-            <!-- Photos Section -->
-            <div class="flex flex-wrap justify-center gap-6 my-10">
-                <img :src="Aries" alt="Aries"
-                    class="w-40 h-40 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
-                <img :src="Ibby" alt="Ibby"
-                    class="w-40 h-40 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
-                <img :src="Vader" alt="Vader"
-                    class="w-40 h-40 object-cover rounded-full border-4 border-gray-700 shadow-lg" />
-            </div>
-
-            <!-- Music Section -->
-            <div class="mt-10 text-center">
-                <h3 class="text-2xl font-semibold mb-4">Check out some material!:</h3>
-
-                <!-- Typewriter Music Description -->
-                <div class="min-h-[100px]">
-                    <p class="text-lg text-gray-300 text-center max-w-3xl mx-auto leading-relaxed">
-                        {{ displayedMusicText }}<span v-if="showMusicCursor" class="cursor">|</span>
-                    </p>
-                </div>
-
-                <!-- Video Section -->
-                <div class="flex flex-col md:flex-row justify-center gap-6 my-8">
-                    <!-- YouTube Video Embed -->
-                    <div
-                        class="relative w-full md:w-1/2 max-w-2xl border-2 border-gray-600 rounded-lg shadow-[0px_4px_20px_rgba(255,255,255,0.3)]">
-                        <iframe class="w-full h-[250px] md:h-[315px] rounded-lg"
-                            src="https://www.youtube.com/embed/ATFxLFDcv5g" title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-
-                    <!-- Local Video -->
-                    <div
-                        class="relative w-full md:w-1/2 max-w-2xl border-2 border-gray-600 rounded-lg shadow-[0px_4px_20px_rgba(255,255,255,0.3)]">
-                        <video class="w-full h-[250px] md:h-[315px] rounded-lg" controls>
-                            <source :src="OnlyAshSolo" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-            </div>
+          <div class="break-words text-sm leading-relaxed text-gray-300">
+            <p v-for="(desc, idx) in job.description" :key="`desc-${idx}`">
+              {{ desc }}
+            </p>
+          </div>
         </div>
-    </transition>
+
+        <!-- Personal Section  -->
+        <div>
+          <span class="inline-block rounded-full bg-black px-4 py-1 text-sm text-white">
+            Personal
+          </span>
+          <p class="my-4 text-lg font-bold">A Passion for Code & Community</p>
+          <p class="max-w-prose text-sm leading-relaxed text-gray-300">
+            {{ fullText }}
+          </p>
+          <a href="https://github.com/burnsidion" target="_blank"
+            class="opacity-70 transition-transform hover:scale-110 hover:opacity-100">
+            <font-awesome-icon :icon="['fab', 'github']" class="pt-3 text-2xl" />
+          </a>
+        </div>
+
+        <!-- Photo Gallery Component  -->
+        <PhotoGallery v-if="windowWidth >= 768" :items="items" />
+
+        <!-- Music Events Section  -->
+        <div v-for="(musicEvent, index) in musicTimeline" :key="`music-${index}`" class="py-10">
+          <span class="inline-block rounded-full bg-black px-4 py-1 text-sm text-white">
+            {{ musicEvent.badge }}
+          </span>
+
+          <p class="my-4 text-lg font-bold">
+            {{ musicEvent.title }}
+          </p>
+
+          <p v-for="(desc, idx) in musicEvent.description" :key="`desc-${idx}`" class="pb-3">
+            {{ desc }}
+          </p>
+
+          <!-- Video Section (YouTube) -->
+          <div v-if="musicEvent.video.includes('youtube.com')" class="relative w-full max-w-2xl md:w-3/4">
+            <GlowBorder>
+              <iframe class="h-[250px] w-full rounded-lg md:h-[315px]" :src="musicEvent.video"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </GlowBorder>
+          </div>
+          <!-- Imported Videos  -->
+          <GlowBorder v-else class="w-full max-w-2xl md:w-3/4">
+            <video controls class="w-full rounded-lg border-2 border-gray-600">
+              <source :src="musicEvent.video" type="video/mp4" />
+            </video>
+          </GlowBorder>
+        </div>
+        <!-- Footer  -->
+        <div class="relative mb-20 flex w-full flex-col items-start pb-16 md:mb-10 md:pb-6">
+          <router-link to="/projects"
+            class="group flex space-x-2 text-left text-lg font-medium transition duration-300 hover:text-gray-400">
+            <span>Check out my projects</span>
+            <span class="relative inline-block h-5 w-5">
+              <div class="animate-bounce-horizontal absolute inset-0">➝</div>
+            </span>
+          </router-link>
+          <Footer
+            class="mx-auto hidden w-full max-w-2xl pb-6 pt-6 text-center text-sm text-gray-300 opacity-70 hover:text-white md:block" />
+        </div>
+      </div>
+    </TracingBeam>
+  </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
-import Aries from "../images/Aries.png";
-import Ibby from "../images/Ibby.png";
-import Vader from "../images/Vader.png";
-import OnlyAshSolo from "../assets/videos/OnlyAshSolo.mp4";
+import { ref, onMounted, onUnmounted } from 'vue';
+import TracingBeam from '../components/TracingBeam.vue';
+import GlowBorder from '../components/GlowBorder.vue';
+import PhotoGallery from '../components/PhotoGallery.vue';
+import HyperText from '../components/HyperText.vue';
+
+import OnlyAshSolo from '../assets/videos/OnlyAshSolo.mp4';
+
+import Aries from '../images/Aries.png';
+import Ibby from '../images/Ibby.png';
+import Vader from '../images/Vader.png';
+import Intense from '../images/intense.png';
+import Show from '../images/show.png';
+import Trailside from '../images/trailside.png';
+import Shadows from '../images/shadows.png';
+import Band from '../images/band.png';
+
+import Footer from '../components/Footer.vue';
 
 const fullText = ref(
-    "I have a deep passion for coding, music, and software engineering. Before diving into web development, I spent years playing guitar in bands and recording my own music..."
+  'I have a deep passion for coding, music, and software engineering. Before diving into web development, I spent years playing guitar in bands and recording my own music...'
 );
 
-const musicText = ref(
-    "You can find a music video for my last band 'Apotheon' below, as well as a cover of one of my favorite songs, 'Only Ash Remains' by Necrophagist."
-);
+const professionalExperience = ref([
+  {
+    title: 'Software Engineer, RealTruck',
+    badge: 'RealTruck',
+    description: [
+      'Migrated components to Vue 3 Composition API, enhancing maintainability and performance.',
+      'Developed responsive UI components with Tailwind CSS, improving mobile usability by 20%.',
+      'Created technical documentation to streamline onboarding and coding standards.',
+      'Rebuilt cart component to render a better organized layout, using CSS Grid',
+    ],
+  },
+  {
+    title: 'Associate Software Engineer, S&P Global',
+    badge: 'S&P Global',
+    description: [
+      "Developed reusable Vue.js components for a RBC's online trading platform with 10M daily users.",
+      'Led WCAG accessibility initiatives, improving usability for screen readers.',
+      'Authored internal guides and tutorials for Vue 3 adoption.',
+    ],
+  },
+  {
+    title: 'My Education',
+    badge: 'Education',
+    description: [
+      'Galvanize | Full-Stack Web Development (2018)',
+      'University of Colorado, Boulder | B.A. in Humanities (2012)',
+    ],
+  },
+]);
 
-const displayedText = ref("");
+const musicTimeline = ref([
+  {
+    title: "Apotheon - 'Mechanically Consumed'",
+    badge: 'Band',
+    video: 'https://www.youtube.com/embed/ATFxLFDcv5g',
+    description: ['Music video for my last band, Apotheon.'],
+  },
+  {
+    title: "Cover: 'Only Ash Remains' - Necrophagist",
+    badge: 'Music',
+    video: OnlyAshSolo,
+    description: ['A technical death metal cover of one of my favorite songs.'],
+  },
+]);
+
 const showCursor = ref(true);
 
-const displayedMusicText = ref("");
-const showMusicCursor = ref(true);
+const windowWidth = ref(window.innerWidth);
 
-const intervals = [];
+const items = [
+  {
+    src: Aries,
+  },
+  {
+    src: Vader,
+  },
+  {
+    src: Ibby,
+  },
+  {
+    src: Intense,
+  },
+  {
+    src: Show,
+  },
+  {
+    src: Trailside,
+  },
+  {
+    src: Shadows,
+  },
+  {
+    src: Band,
+  },
+];
 
-const typeText = (textRef, displayedRef, cursorRef) => {
-    let index = 0;
-    const interval = setInterval(() => {
-        if (index < textRef.value.length) {
-            displayedRef.value += textRef.value[index];
-            index++;
-        } else {
-            clearInterval(interval);
-            cursorRef.value = false;
-        }
-    }, 40);
+const showHeader = ref(false);
 
-    intervals.push(interval);
+const updateWidth = () => {
+  windowWidth.value = window.innerWidth;
 };
 
 onMounted(() => {
-    typeText(fullText, displayedText, showCursor);
-    typeText(musicText, displayedMusicText, showMusicCursor);
+  setTimeout(() => {
+    showHeader.value = true;
+  }, 100)
+  window.addEventListener('resize', updateWidth);
 });
 
 onUnmounted(() => {
-    intervals.forEach(clearInterval);
+  showHeader.value = false;
+  window.removeEventListener('resize', updateWidth);
 });
 </script>
 
 <style scoped>
-.fade-enter-active {
-    animation: fadeInScale 1s ease-in-out;
-}
-
-@keyframes fadeInScale {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
 .cursor {
-    animation: blink 1s infinite;
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
-    50% {
-        opacity: 0;
-    }
+  50% {
+    opacity: 0;
+  }
 }
+
+@keyframes bounce-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-bounce-horizontal {
+  display: inline-block;
+  animation: bounce-horizontal 1s infinite ease-in-out;
+}
+
 </style>

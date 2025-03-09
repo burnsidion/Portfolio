@@ -1,16 +1,44 @@
 <script setup>
-import NavBar from "./components/NavBar.vue";
-import Footer from "./components/Footer.vue";
+import { useRoute } from 'vue-router';
+import { Motion } from 'motion-v';
+import AuroraBackground from './components/AuroraBackground.vue';
+import NavBar from './components/NavBar.vue';
+import Footer from './components/Footer.vue';
+
+const route = useRoute();
 </script>
 
 <template>
-  <div class="flex flex-col min-h-screen bg-[#1d1e22]">
-    <NavBar />
-    <main class="flex-1 flex flex-col justify-center">
-      <router-view />
-    </main>
-    <Footer />
-  </div>
+  <!-- Transition wraps EVERYTHING, including AuroraBackground -->
+  <transition name="fade-page" mode="out-in">
+    <div :key="route.fullPath">
+      <AuroraBackground>
+        <Motion as="div" class="relative flex min-h-screen flex-col">
+          <NavBar />
+          <main class="flex flex-1 flex-col justify-center">
+            <router-view />
+          </main>
+          <div class="fixed bottom-0 w-full bg-black bg-opacity-85 py-3 md:hidden">
+            <Footer class="text-gray-100 hover:text-white" />
+          </div>
+        </Motion>
+      </AuroraBackground>
+    </div>
+  </transition>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Full page fade effect */
+.fade-page-enter-active,
+.fade-page-leave-active {
+  transition: opacity 0.8s ease-in-out;
+}
+
+.fade-page-enter-from {
+  opacity: 0;
+}
+
+.fade-page-leave-to {
+  opacity: 0;
+}
+</style>

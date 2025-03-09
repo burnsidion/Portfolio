@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--text-color);
+  background-color: #1d1e22;
 }
 
 html {
@@ -16,7 +17,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Audiowide", sans-serif;
+  font-family: 'Audiowide', sans-serif;
 }
 
 @layer base {
