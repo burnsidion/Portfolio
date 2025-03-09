@@ -42,8 +42,9 @@
             class="relative overflow-hidden rounded-lg bg-gray-900 shadow-lg" @mouseenter="hoverOn[index] = true"
             @mouseleave="hoverOn[index] = false" @click="openModal(app)">
             <GlowBorder class="w-full">
-              <video :src="app.video" class="w-full rounded-lg object-cover transition-opacity duration-300" autoplay
-                loop muted></video>
+              <video :src="app.video" class="w-full rounded-lg object-cover transition-opacity duration-300"
+                :autoplay="hoverOn[index] || isMobile" loop muted>
+              </video>
             </GlowBorder>
             <div
               class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 text-white transition-opacity duration-300"

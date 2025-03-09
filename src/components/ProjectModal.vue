@@ -17,7 +17,7 @@
                         <p class="text-gray-400 mt-2">{{ project.description }}</p>
 
                         <!-- Video Preview -->
-                        <div class="relative mt-4">
+                        <div class="relative mt-4" v-if="isOpen">
                             <video :src="project.video" class="w-full rounded-lg shadow-lg" autoplay loop muted></video>
                         </div>
 
@@ -41,7 +41,7 @@
                         <div class="mt-6">
                             <div class="flex gap-2 pb-2">
                                 <h3 class="text-lg font-semibold">Website</h3>
-                                <font-awesome-icon :icon="['fas', 'globe']" class="text-2xl"/>
+                                <font-awesome-icon :icon="['fas', 'globe']" class="text-2xl" />
                             </div>
                             <a :href="project.liveLink" target="_blank" rel="noopener noreferrer"
                                 class="text-gray-200 hover:underline">
