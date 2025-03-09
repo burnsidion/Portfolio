@@ -43,7 +43,7 @@
             @mouseleave="hoverOn[index] = false" @click="openModal(app)">
             <GlowBorder class="w-full">
               <video :src="app.video" class="w-full rounded-lg object-cover transition-opacity duration-300"
-                :autoplay="hoverOn[index] || isMobile" loop muted playsinline preload="auto">
+                autoplay loop muted playsinline preload="auto">
               </video>
             </GlowBorder>
             <div
@@ -88,6 +88,7 @@
 import { ref, onMounted } from 'vue';
 import VueAppVideo from '../assets/videos/Vue-Weather-App.mp4';
 import ReactAppVideo from '../assets/videos/React-Weather-App.mp4';
+import PortfolioVideo from '../assets/videos/Portfolio-Walkthrough-Video.mp4';
 
 import SkeletonCard from '../components/SkeletonCard.vue';
 import BoxReveal from '../components/BoxReveal.vue';
@@ -106,7 +107,7 @@ const apps = [
     description: 'A sleek weather tracker built with Vue.js and Tailwind.',
     extendedDescription: "A full stack weather app built with Vue.js and Tailwind on the front end, and express.js on the backend. Uses the OpenWeatherMap API, and MapBox API to allow users to search for, preview, and track cities and their weather.",
     video: VueAppVideo,
-    technologies: ['Vue', 'Tailwind', 'OpenWeatherMap', 'MapBoxAPI'],
+    technologies: ['Vue3', 'Tailwind', 'OpenWeatherMap', 'MapBoxAPI'],
     liveLink: 'https://weathering-heights-d1cfbe2e31ee.herokuapp.com/',
     repoLink: 'https://github.com/burnsidion/Vue-Weather-App',
   },
@@ -119,6 +120,15 @@ const apps = [
     liveLink: 'https://weathering-heights-react-ee026e20f12a.herokuapp.com/',
     repoLink: 'https://github.com/burnsidion/React-Weather-App',
   },
+  {
+    name: 'My Portfolio Page',
+    description: 'A fully responsive and sleek design to showcase myself.',
+    extendedDescription: 'This Portfolio page was built with Vue3/Vite, utilizing Tailwind CSS, and InspiraUI to add some personal flare. Deployed on Netlify',
+    video: PortfolioVideo,
+    technologies: ['Vue3', 'Vite', 'Tailwind CSS', 'InspiraUI'],
+    liveLink: 'https://ianbportfolio.netlify.app/',
+    repoLink: 'https://github.com/burnsidion/Portfolio'
+  }
 ];
 
 const openModal = (project) => {
