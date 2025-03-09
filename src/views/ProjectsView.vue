@@ -122,6 +122,7 @@ const apps = [
 ];
 
 const openModal = (project) => {
+  document.querySelectorAll('video').forEach(video => video.pause());
   selectedProject.value = project;
   showModal.value = true;
 };
