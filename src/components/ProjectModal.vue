@@ -17,11 +17,9 @@
                         <p class="text-gray-400 mt-2">{{ project.description }}</p>
 
                         <!-- Video Preview -->
-                        <div class="relative mt-4" v-if="isOpen">
-                            <video v-if="isOpen && project.video" :src="project.video"
-                                class="w-full rounded-lg shadow-lg" autoplay loop muted playsinline>
-                            </video>
-                        </div>
+                        <video v-if="isOpen && project.video" :src="project.video" class="w-full rounded-lg shadow-lg"
+                            :autoplay="isOpen" loop muted playsinline>
+                        </video>
 
                         <!-- Extended Description -->
                         <div class="mt-4">
