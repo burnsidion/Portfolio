@@ -8,7 +8,7 @@
             <LetterPullup words="Contact Me" :delay="0.05" class="text-4xl font-bold text-gray-100 mb-4" />
             <p class="text-gray-400 text-lg">
                 Get in touch or shoot me an email directly at
-                <span class="font-semibold text-white">your-email@example.com</span>
+                <span class="font-semibold text-white">ian.burnside89@gmail.com</span>
             </p>
         </div>
 
