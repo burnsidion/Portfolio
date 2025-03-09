@@ -235,4 +235,5 @@ onUnmounted(() => {
   display: inline-block;
   animation: bounce-horizontal 1s infinite ease-in-out;
 }
+
 </style>
