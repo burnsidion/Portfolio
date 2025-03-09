@@ -3,11 +3,11 @@
         <section class="text-center max-w-3xl mx-auto mt-32">
 
             <BlurReveal :delay="0.2" :duration="0.75" class="p-8">
-                <h1 class="text-3xl text-gray-200 font-bold tracking-tighter xl:text-6xl/none sm:text-5xl">Here's my
+                <h1 class="text-3xl text-gray-200 font-bold tracking-tighter xl:text-6xl/none sm:text-5xl">My Resumé
                 </h1>
-                <span class="text-pretty text-gray-200 text-xl tracking-tighter xl:text-4xl/none sm:text-3xl">
+                <!-- <span class="text-pretty text-gray-200 text-xl tracking-tighter xl:text-4xl/none sm:text-3xl">
                     Resumé
-                </span>
+                </span> -->
             </BlurReveal>
 
             <div class="text-blance flex justify-center space-y-4">
@@ -16,7 +16,7 @@
                     <TextHighlight class="bg-gradient-to-r from-blue-900 to-purple-800">
                         Contact Page.
                     </TextHighlight>
-                    Or, feel free to
+                    And feel free to
                     <TextHighlight class="bg-gradient-to-r from-blue-900 to-purple-800">
                         Download or Print
                     </TextHighlight>
