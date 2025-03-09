@@ -197,7 +197,7 @@ onMounted(() => {
     const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
     const distance = Math.sqrt(dx * dx + dy * dy);
 
-    const speed = 0.003 + (distance / maxDistance) * 0.01;
+    const speed = 0.002 + (distance / maxDistance) * 0.008; // Slightly reduced speed for smoother rotation
 
     if (targetRotation.value) {
       const { startX, startY, x: tx, y: ty, startTime, duration } = targetRotation.value;
@@ -240,7 +240,9 @@ onMounted(() => {
       ctx.restore();
     });
 
-    animationFrameRef.value = requestAnimationFrame(animate);
+    if (window.innerWidth >= 768) { // Prevents excessive animation loops on mobile
+      animationFrameRef.value = requestAnimationFrame(animate);
+    }
   }
 
   animationFrameRef.value = requestAnimationFrame(animate);
