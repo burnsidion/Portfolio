@@ -9,8 +9,8 @@
                     ✕
                 </button>
                 <!-- Lamp Effect (Fixed at the top) -->
-                <LampEffect class="absolute top-14 w-full h-full z-10">
-                    <div class="p-6 relative z-20">
+                <LampEffect class="absolute top-14 w-full h-full z-10 overflow-y-auto">
+                    <div class="p-6 mb-10 relative z-20">
 
                         <!-- Project Content -->
                         <h2 class="text-3xl font-bold mt-6">{{ project.name }}</h2>
