@@ -1,6 +1,7 @@
 <template>
     <transition name="slide-fade">
-        <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-70">
+        <div v-if="isOpen"
+            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 overflow-y-auto">
             <!-- Modal Content Wrapper -->
             <div
                 class="relative h-full w-full max-w-lg transform bg-gray-900 text-gray-300 transition-transform duration-500">
