@@ -43,7 +43,7 @@
             @mouseleave="hoverOn[index] = false" @click="openModal(app)">
             <GlowBorder class="w-full">
               <video :src="app.video" class="w-full rounded-lg object-cover transition-opacity duration-300"
-                :autoplay="hoverOn[index] || isMobile" loop muted playsinline preload="none">
+                :autoplay="hoverOn[index] || isMobile" loop muted playsinline preload="auto">
               </video>
             </GlowBorder>
             <div
