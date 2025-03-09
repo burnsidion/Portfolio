@@ -18,6 +18,7 @@ import About from './views/AboutMeView.vue';
 import Projects from './views/ProjectsView.vue';
 import HomeView from './views/HomeView.vue';
 import ContactView from './views/ContactView.vue';
+import ResumeView from './views/ResumeView.vue';
 
 library.add(faGithub, faLinkedin, faTwitter, faDribbble, faInstagram, faGlobe);
 
@@ -25,7 +26,8 @@ const routes = [
   { path: '/', component: HomeView },
   { path: '/about', component: About },
   { path: '/projects', component: Projects },
-  { path: '/contact', component: ContactView}
+  { path: '/contact', component: ContactView },
+  { path: '/resume', component: ResumeView }
 ];
 
 const router = createRouter({
