@@ -3,7 +3,7 @@
         <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 h-screen">
             <!-- Modal Content Wrapper -->
             <div
-                class="relative h-full w-full max-w-lg transform bg-gray-900 text-gray-300 transition-transform duration-500 overflow-y-auto">
+                class="relative w-full max-w-lg transform bg-gray-900 text-gray-300 transition-transform duration-500 max-h-screen overflow-y-auto">
                 <!-- Close Button -->
                 <button @click="closeModal" class="absolute right-4 top-4 text-gray-400 text-2xl hover:text-white z-20">
                     ✕
