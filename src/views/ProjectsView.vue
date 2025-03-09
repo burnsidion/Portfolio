@@ -43,7 +43,7 @@
             @mouseleave="hoverOn[index] = false" @click="openModal(app)">
             <GlowBorder class="w-full">
               <video :src="app.video" class="w-full rounded-lg object-cover transition-opacity duration-300"
-                :autoplay="hoverOn[index] || isMobile" loop muted>
+                :autoplay="hoverOn[index] || isMobile" loop muted playsinline preload="none">
               </video>
             </GlowBorder>
             <div
@@ -183,5 +183,9 @@ onMounted(() => {
 .animate-bounce-horizontal {
   display: inline-block;
   animation: bounce-horizontal 1s infinite ease-in-out;
+}
+
+video {
+  pointer-events: none;
 }
 </style>
