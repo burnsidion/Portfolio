@@ -62,7 +62,7 @@
         <router-link to="/" @click="closeMenu" class="transition duration-300 hover:text-gray-400">
           Home
         </router-link>
-        <router-link to="/conact" class="transition duration-300 hover:text-gray-400">
+        <router-link to="/contact" class="transition duration-300 hover:text-gray-400">
           Contact
         </router-link>
       </div>
