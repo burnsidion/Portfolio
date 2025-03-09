@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col items-center justify-center px-6 sm:px-10 lg:px-20 text-gray-200">
+    <div class="min-h-screen flex flex-col items-center px-6 sm:px-10 lg:px-20 text-gray-200 pt-24 pb-32 gap-12">
 
         <div v-if="successMessage" class="text-green-500 text-center mt-4">{{ successMessage }}</div>
         <div v-if="errorMessage" class="text-red-500 text-center mt-4">{{ errorMessage }}</div>
