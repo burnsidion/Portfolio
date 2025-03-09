@@ -62,8 +62,9 @@
             </div>
           </div>
         </div>
+        <!-- <template> -->
         <transition name="slide-fade">
-          <ProjectModal v-if="showModal" :project="selectedProject" :isOpen="showModal" @close="closeModal" />
+          <ProjectModal :project="selectedProject" :isOpen="showModal" @close="closeModal" />
         </transition>
       </div>
 

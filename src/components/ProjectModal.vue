@@ -18,7 +18,8 @@
 
                         <!-- Video Preview -->
                         <div class="relative mt-4" v-if="isOpen">
-                            <video :src="project.video" class="w-full rounded-lg shadow-lg" autoplay loop muted></video>
+                            <video v-if="isOpen && project.video" :src="project.video"
+                                class="w-full rounded-lg shadow-lg" autoplay loop muted></video>
                         </div>
 
                         <!-- Extended Description -->

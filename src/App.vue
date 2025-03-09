@@ -29,10 +29,12 @@ import { ref, onMounted } from 'vue';
 const isMobile = ref(false);
 
 onMounted(() => {
-  isMobile.value = window.innerWidth <= 768;
-  window.addEventListener('resize', () => {
+  const checkMobile = () => {
     isMobile.value = window.innerWidth <= 768;
-  });
+  };
+
+  checkMobile();
+  window.addEventListener('resize', checkMobile);
 });
 
 const route = useRoute();
