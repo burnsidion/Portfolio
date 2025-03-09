@@ -231,10 +231,7 @@ onMounted(() => {
       ctx.restore();
     });
 
-    const isMobile = window.innerWidth < 768;
-    if (!isMobile || isDragging.value) {
-      animationFrameRef.value = requestAnimationFrame(animate);
-    }
+    animationFrameRef.value = requestAnimationFrame(animate);
   }
 
   animationFrameRef.value = requestAnimationFrame(animate);
