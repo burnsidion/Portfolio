@@ -95,6 +95,7 @@ import PhotoGallery from '../components/PhotoGallery.vue';
 import HyperText from '../components/HyperText.vue';
 
 import OnlyAshSolo from '../assets/videos/OnlyAshSolo.mp4';
+import Intervals from '../assets/videos/intervals.mp4';
 
 import Aries from '../images/Aries.png';
 import Ibby from '../images/Ibby.png';
@@ -108,7 +109,7 @@ import Band from '../images/band.png';
 import Footer from '../components/Footer.vue';
 
 const fullText = ref(
-  'I have a deep passion for coding, music, and software engineering. Before diving into web development, I spent years playing guitar in bands and recording my own music...'
+  'I have a deep passion for coding, music, and software engineering. Before diving into web development, my biggest passion was music. I have been playing guitar for about 20 years, played in multiple bands, and also write/record my own solo material. Im a huge fan of technical death metal, and the virtuosity/intensity it requires.'
 );
 
 const professionalExperience = ref([
@@ -116,19 +117,14 @@ const professionalExperience = ref([
     title: 'Software Engineer, RealTruck',
     badge: 'RealTruck',
     description: [
-      'Migrated components to Vue 3 Composition API, enhancing maintainability and performance.',
-      'Developed responsive UI components with Tailwind CSS, improving mobile usability by 20%.',
-      'Created technical documentation to streamline onboarding and coding standards.',
-      'Rebuilt cart component to render a better organized layout, using CSS Grid',
+      'At RealTruck, I played a key role in modernizing the frontend by migrating components to the Vue 3 Composition API, significantly improving maintainability and performance. I also focused on optimizing mobile usability, redesigning key UI components with Tailwind CSS, which led to a 20% improvement in responsiveness. To streamline collaboration, I authored internal technical documentation and best practices. Additionally, I rebuilt the cart component using CSS Grid, creating a more intuitive and structured layout for users.'
     ],
   },
   {
     title: 'Associate Software Engineer, S&P Global',
     badge: 'S&P Global',
     description: [
-      "Developed reusable Vue.js components for a RBC's online trading platform with 10M daily users.",
-      'Led WCAG accessibility initiatives, improving usability for screen readers.',
-      'Authored internal guides and tutorials for Vue 3 adoption.',
+      'As an Associate Software Engineer at S&P Global, I developed reusable Vue.js components for RBC’s high-traffic online trading platform, serving over 10 million daily users. I led WCAG accessibility improvements to enhance the experience for screen readers and ensure compliance with accessibility standards. Beyond coding, I contributed to the team by writing internal guides and tutorials to facilitate the adoption of Vue 3, helping onboard developers more efficiently.'
     ],
   },
   {
@@ -149,10 +145,21 @@ const musicTimeline = ref([
     description: ['Music video for my last band, Apotheon.'],
   },
   {
+    title: "Apotheon - 'Mechanically Consumed' Full EP",
+    badge: 'Band',
+    video: 'https://www.youtube.com/embed/XReG2F3G-SE',
+    description: ['The Full EP, I wrote the title track for this.']
+  },
+  {
     title: "Cover: 'Only Ash Remains' - Necrophagist",
     badge: 'Music',
     video: OnlyAshSolo,
     description: ['A technical death metal cover of one of my favorite songs.'],
+  },{
+    title: "Cover: 'Im Awake' - Intervals",
+    badge: 'Music',
+    video: Intervals,
+    description: ['A cover of a bit proggier song from the band "Intervals"'],
   },
 ]);
 
@@ -235,5 +242,4 @@ onUnmounted(() => {
   display: inline-block;
   animation: bounce-horizontal 1s infinite ease-in-out;
 }
-
 </style>

@@ -11,7 +11,7 @@
           :animate="{
             backgroundColor:
               scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 1)',
-            borderColor: scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(5, 150, 105, 1)',
+            borderColor: scrollYProgress > 0 ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 1)',
           }"
           class="size-2 rounded-full border border-neutral-300 bg-white"
         />
@@ -75,6 +75,7 @@ const tracingBeamContentRef = ref<HTMLDivElement>();
 const scrollYProgress = ref(0);
 const svgHeight = ref(0);
 const scrollPercentage = ref(0);
+const isMobile = ref(window.innerWidth <= 768);
 
 const computedY1 = computed(
   () =>
@@ -88,10 +89,27 @@ const computedY2 = computed(
     (1.4 - scrollPercentage.value)
 );
 
+// Adjust spring values for more responsiveness
 const spring = useSpring(
   { y1: computedY1.value, y2: computedY2.value },
-  { tension: 60, friction: 50, precision: 0.01 }
+  { tension: 50, friction: 70, precision: 0.01 }
 );
+
+const updateSpringValues = () => {
+  if (isMobile.value) {
+    spring.tension = 48; // Minor adjustment for smoother slowdown
+    spring.friction = 140; // More friction to slow the drop further
+  } else {
+    spring.tension = 54; // Slows down slightly
+    spring.friction = 110; // Stops the beam sooner after scrolling stops
+  }
+};
+
+watch(isMobile, updateSpringValues, { immediate: true });
+
+window.addEventListener('resize', () => {
+  isMobile.value = window.innerWidth <= 768;
+});
 
 watch(computedY1, (newY1) => {
   spring.y1 = newY1;
@@ -107,9 +125,23 @@ function updateScrollYProgress() {
     const windowHeight = window.innerHeight;
     const elementHeight = boundingRect.height;
 
-    scrollPercentage.value = (windowHeight - boundingRect.top) / (windowHeight + elementHeight);
+    // Ensure the beam starts moving up much sooner
+    const newScrollPercentage = Math.min(
+      1,
+      Math.max(0, (windowHeight * 0.75 - boundingRect.top) / (windowHeight + elementHeight))
+    );
 
-    scrollYProgress.value = (boundingRect.y / windowHeight) * -1;
+    // Adjust beam movement to be more controlled
+    if (isMobile.value) {
+      scrollYProgress.value = (boundingRect.y / windowHeight) * -0.5; // Prevents dropping too far
+    } else {
+      scrollYProgress.value = (boundingRect.y / windowHeight) * -1.05; // Reduces overshooting
+    }
+
+    // Only update if there's a significant change, preventing sudden jumps
+    if (Math.abs(newScrollPercentage - scrollPercentage.value) > 0.02) {
+      scrollPercentage.value = newScrollPercentage;
+    }
   }
 }
 
