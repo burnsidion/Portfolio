@@ -42,9 +42,9 @@
             class="relative overflow-hidden rounded-lg bg-gray-900 shadow-lg" @mouseenter="hoverOn[index] = true"
             @mouseleave="hoverOn[index] = false" @click="openModal(app)">
             <GlowBorder class="w-full">
-              <video :src="app.video" class="w-full rounded-lg object-cover transition-opacity duration-300"
-                autoplay loop muted playsinline preload="auto">
-              </video>
+              <iframe :src="app.video" class="w-full h-full rounded-lg object-cover transition-opacity duration-300"
+                frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                style="aspect-ratio: 16/9; width: 100%; height: auto; pointer-events: none;"></iframe>
             </GlowBorder>
             <div
               class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/80 to-transparent p-4 text-white transition-opacity duration-300"
@@ -86,9 +86,6 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
-import VueAppVideo from '../assets/videos/Vue-Weather-App.mp4';
-import ReactAppVideo from '../assets/videos/React-Weather-App.mp4';
-import PortfolioVideo from '../assets/videos/Portfolio-Walkthrough-Video.mp4';
 
 import SkeletonCard from '../components/SkeletonCard.vue';
 import BoxReveal from '../components/BoxReveal.vue';
@@ -106,7 +103,7 @@ const apps = [
     name: 'Vue Weather App',
     description: 'A sleek weather tracker built with Vue.js and Tailwind.',
     extendedDescription: "A full stack weather app built with Vue.js and Tailwind on the front end, and express.js on the backend. Uses the OpenWeatherMap API, and MapBox API to allow users to search for, preview, and track cities and their weather.",
-    video: VueAppVideo,
+    video: 'https://player.vimeo.com/video/1064123116?autoplay=1&loop=1&muted=1&background=1',
     technologies: ['Vue3', 'Tailwind', 'OpenWeatherMap', 'MapBoxAPI'],
     liveLink: 'https://weathering-heights-d1cfbe2e31ee.herokuapp.com/',
     repoLink: 'https://github.com/burnsidion/Vue-Weather-App',
@@ -115,7 +112,7 @@ const apps = [
     name: 'React Weather App',
     description: 'A modern weather app leveraging React and Context API.',
     extendedDescription: "A React-based weather app with the same functionality as its Vue counterpart. Utilizes React's Context API for state management as well.",
-    video: ReactAppVideo,
+    video: 'https://player.vimeo.com/video/1064123105?autoplay=1&loop=1&muted=1&background=1',
     technologies: ['React', 'Context API', 'Tailwind', 'Vite'],
     liveLink: 'https://weathering-heights-react-ee026e20f12a.herokuapp.com/',
     repoLink: 'https://github.com/burnsidion/React-Weather-App',
@@ -123,14 +120,13 @@ const apps = [
   {
     name: 'My Portfolio Page',
     description: 'A fully responsive and sleek design to showcase myself.',
-    extendedDescription: 'This Portfolio page was built with Vue3/Vite, utilizing Tailwind CSS, and InspiraUI to add some personal flare. Deployed on Netlify',
-    video: PortfolioVideo,
+    extendedDescription: 'This Portfolio page was built with Vue3/Vite, utilizing Tailwind CSS, and InspiraUI to add some personal flare. Deployed on Netlify, all videos hosted on Vimeo',
+    video: 'https://player.vimeo.com/video/1064123049?autoplay=1&loop=1&muted=1&background=1',
     technologies: ['Vue3', 'Vite', 'Tailwind CSS', 'InspiraUI'],
     liveLink: 'https://ianbportfolio.netlify.app/',
-    repoLink: 'https://github.com/burnsidion/Portfolio'
+    repoLink: 'https://github.com/burnsidion/Portfolio',
   }
 ];
-
 const openModal = (project) => {
   document.querySelectorAll('video').forEach(video => video.pause());
   selectedProject.value = project;

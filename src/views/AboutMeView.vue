@@ -65,13 +65,13 @@
           </div>
           <!-- Imported Videos  -->
           <GlowBorder v-else class="w-full max-w-2xl md:w-3/4">
-            <video controls class="w-full rounded-lg border-2 border-gray-600">
-              <source :src="musicEvent.video" type="video/mp4" />
-            </video>
+            <iframe :src="`${musicEvent.video}?controls=1`" class="w-full rounded-lg border-2 border-gray-600"
+              frameborder="0" allow="fullscreen" allowfullscreen style="aspect-ratio: 16/9;">
+            </iframe>
           </GlowBorder>
         </div>
         <!-- Footer  -->
-        <div class="relative mb-20 flex w-full flex-col items-start pb-16 md:mb-10 md:pb-6">
+        <div class=" relative mb-20 flex w-full flex-col items-start pb-16 md:mb-10 md:pb-6">
           <router-link to="/projects"
             class="group flex space-x-2 text-left text-lg font-medium transition duration-300 hover:text-gray-400">
             <span>Check out my projects</span>
@@ -93,9 +93,6 @@ import TracingBeam from '../components/TracingBeam.vue';
 import GlowBorder from '../components/GlowBorder.vue';
 import PhotoGallery from '../components/PhotoGallery.vue';
 import HyperText from '../components/HyperText.vue';
-
-import OnlyAshSolo from '../assets/videos/OnlyAshSolo.mp4';
-import Intervals from '../assets/videos/intervals.mp4';
 
 import Aries from '../images/Aries.png';
 import Ibby from '../images/Ibby.png';
@@ -153,12 +150,12 @@ const musicTimeline = ref([
   {
     title: "Cover: 'Only Ash Remains' - Necrophagist",
     badge: 'Music',
-    video: OnlyAshSolo,
+    video: 'https://player.vimeo.com/video/1064122859?autoplay01&loop=0&muted=0&background=1',
     description: ['A technical death metal cover of one of my favorite songs.'],
   },{
     title: "Cover: 'Im Awake' - Intervals",
     badge: 'Music',
-    video: Intervals,
+    video: 'https://player.vimeo.com/video/1064122724?autoplay=0&loop=0&muted=0&background=1',
     description: ['A cover of a bit proggier song from the band "Intervals"'],
   },
 ]);
