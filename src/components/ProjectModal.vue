@@ -2,7 +2,7 @@
     <transition name="slide-fade">
         <div v-if="isOpen" class="fixed inset-0 z-50 flex items-center justify-end bg-black bg-opacity-70">
             <!-- Modal Content Wrapper -->
-            <div
+            <div ref="modalRef"
                 class="relative h-full w-full max-w-lg transform bg-gray-900 text-gray-300 transition-transform duration-500">
                 <!-- Close Button -->
                 <button @click="closeModal" class="absolute right-4 top-4 text-gray-400 text-2xl hover:text-white z-20">
@@ -18,13 +18,17 @@
 
                         <!-- Video Preview -->
                         <div class="relative mt-4" v-if="isOpen">
-                            <video :src="project.video" class="w-full rounded-lg shadow-lg" :autoplay="isOpen" loop
-                                muted playsinline>
-                            </video>
+                            <GlowBorder>
+                                <iframe
+                                    :src="`${project.video}?autoplay=1&loop=1&muted=1&background=1&controls=0&title=0&byline=0&portrait=0`"
+                                    class="w-full h-full rounded-lg object-cover transition-opacity duration-300"
+                                    frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                                    style="aspect-ratio: 16/9; pointer-events: none;"></iframe>
+                            </GlowBorder>
                         </div>
 
                         <!-- Extended Description -->
-                        <div class="mt-4">
+                        <div class=" mt-4">
                             <p class="text-gray-300">{{ project.extendedDescription }}</p>
                         </div>
 
@@ -70,7 +74,10 @@
 </template>
 
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
 import LampEffect from '../components/LampEffect.vue';
+import GlowBorder from './GlowBorder.vue';
+
 const props = defineProps({
     project: Object,
     isOpen: Boolean,
@@ -78,9 +85,26 @@ const props = defineProps({
 
 const emit = defineEmits(['close']);
 
+const modalRef = ref(null);
+
 const closeModal = () => {
     emit('close');
 };
+
+const handleClickOutside = (event) => {
+    if (modalRef.value && !modalRef.value.contains(event.target)) {
+        emit('close');
+    }
+};
+
+
+onMounted(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+});
+
+onUnmounted(() => {
+    document.removeEventListener('mousedown', handleClickOutside);
+});
 </script>
 
 <style scoped>
