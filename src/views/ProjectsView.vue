@@ -129,26 +129,39 @@ const apps = [
   {
     name: 'Intentour-y (In progress)',
     description: 'A robust and responsive inventory and sales tracking application for merchandise managers.',
-    extendedDescription: 'Allows users to easily add and keep track of inventory and nightly sales. Using Supabase for database hosting, Vue3 with Tailind and DaisyUI on the Front-End. Express.js and Axios for the API.',
+    extendedDescription: 'Allows users to easily add and keep track of inventory and nightly sales. Using Supabase for database hosting, Vue3 with Tailwind and DaisyUI on the Front-End. Express.js and Axios for the API.',
     video: 'https://player.vimeo.com/video/1069363973?autoplay=1&loop=1&muted=1&background=1',
-    technologies: ['Vue3', 'Pinia', 'Vite', 'Tailwind CSS', 'DaisyUI'],
+    technologies: ['Vue3', 'Pinia', 'Vite', 'Tailwind CSS', 'DaisyUI', 'Supabase', 'PostgreSQL'],
     liveLink: 'Coming Soon!',
     repoLink: 'https://github.com/burnsidion/Inventour-y'
+  },
+  {
+    name: 'ResumeAI (In progress)',
+    description: 'Handy and intuitive resume tailoring and job tracking',
+    extendedDescription: 'Full-Stack application, catered to job hunters. Allows for easy reasume tailoring (ATS Friendly), and job application tracking for organization. Built with Supabase, Vue3, Pinia, Tailwind, InspiraUI, and Shadcn for Vue',
+    video: 'https://player.vimeo.com/video/1069400766?autoplay=1&loop=1&muted=1&background=1',
+    technologies: ['Vue3', 'Pinia', 'Vite', 'Tailwind CSS', 'InspiraUI', 'Supabase', 'PostgreSQL'],
+    liveLink: 'Coming Soon!',
+    repoLink: 'https://github.com/burnsidion/jobgoblin'
   }
 ];
-const openModal = (project) => {
+const openModal = (project) =>
+{
   document.querySelectorAll('video').forEach(video => video.pause());
   selectedProject.value = project;
   showModal.value = true;
 };
 
-const closeModal = () => {
+const closeModal = () =>
+{
   showModal.value = false;
   selectedProject.value = null;
 };
 
-onMounted(() => {
-  window.addEventListener('resize', () => {
+onMounted(() =>
+{
+  window.addEventListener('resize', () =>
+  {
     isMobile.value = window.innerWidth < 768;
   });
 });
