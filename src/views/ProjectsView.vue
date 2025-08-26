@@ -127,7 +127,7 @@ const apps = [
     repoLink: 'https://github.com/burnsidion/Portfolio',
   },
   {
-    name: 'Intentour-y',
+    name: 'Inventour-y',
     description: 'A robust and responsive inventory and sales tracking application for merchandise managers.',
     extendedDescription: 'Allows users to easily add and keep track of inventory and nightly sales. Using Supabase for database hosting, Vue3 with Tailwind and DaisyUI on the Front-End. Express.js and Axios for the API.',
     video: 'https://player.vimeo.com/video/1069363973?autoplay=1&loop=1&muted=1&background=1',
