@@ -100,6 +100,24 @@ const selectedProject = ref(null);
 
 const apps = [
   {
+    name: 'Inventour-y',
+    description: 'A robust and responsive inventory and sales tracking application for merchandise managers.',
+    extendedDescription: 'Allows users to easily add and keep track of inventory and nightly sales. Using Supabase for database hosting, Vue3 with Tailwind and DaisyUI on the Front-End. Express.js and Axios for the API.',
+    video: 'https://player.vimeo.com/video/1069363973?autoplay=1&loop=1&muted=1&background=1',
+    technologies: ['Vue3', 'Pinia', 'Vite', 'Tailwind CSS', 'DaisyUI', 'Supabase', 'PostgreSQL'],
+    liveLink: 'https://inventour-y.onrender.com/',
+    repoLink: 'https://github.com/burnsidion/Inventour-y'
+  },
+  {
+    name: 'ResumeAI (In progress)',
+    description: 'Handy and intuitive resume tailoring and job tracking',
+    extendedDescription: 'Full-Stack application, catered to job hunters. Allows for easy reasume tailoring (ATS Friendly), and job application tracking for organization. Built with Supabase, Vue3, Pinia, Tailwind, InspiraUI, and Shadcn for Vue',
+    video: 'https://player.vimeo.com/video/1069400766?autoplay=1&loop=1&muted=1&background=1',
+    technologies: ['Vue3', 'Pinia', 'Vite', 'Tailwind CSS', 'InspiraUI', 'Supabase', 'PostgreSQL'],
+    liveLink: 'Coming Soon!',
+    repoLink: 'https://github.com/burnsidion/jobgoblin'
+  },
+  {
     name: 'Vue Weather App',
     description: 'A sleek weather tracker built with Vue.js and Tailwind.',
     extendedDescription: "A full stack weather app built with Vue.js and Tailwind on the front end, and express.js on the backend. Uses the OpenWeatherMap API, and MapBox API to allow users to search for, preview, and track cities and their weather.",
@@ -125,24 +143,6 @@ const apps = [
     technologies: ['Vue3', 'Vite', 'Tailwind CSS', 'InspiraUI'],
     liveLink: 'https://ianbportfolio.netlify.app/',
     repoLink: 'https://github.com/burnsidion/Portfolio',
-  },
-  {
-    name: 'Inventour-y',
-    description: 'A robust and responsive inventory and sales tracking application for merchandise managers.',
-    extendedDescription: 'Allows users to easily add and keep track of inventory and nightly sales. Using Supabase for database hosting, Vue3 with Tailwind and DaisyUI on the Front-End. Express.js and Axios for the API.',
-    video: 'https://player.vimeo.com/video/1069363973?autoplay=1&loop=1&muted=1&background=1',
-    technologies: ['Vue3', 'Pinia', 'Vite', 'Tailwind CSS', 'DaisyUI', 'Supabase', 'PostgreSQL'],
-    liveLink: 'https://inventour-y.onrender.com/',
-    repoLink: 'https://github.com/burnsidion/Inventour-y'
-  },
-  {
-    name: 'ResumeAI (In progress)',
-    description: 'Handy and intuitive resume tailoring and job tracking',
-    extendedDescription: 'Full-Stack application, catered to job hunters. Allows for easy reasume tailoring (ATS Friendly), and job application tracking for organization. Built with Supabase, Vue3, Pinia, Tailwind, InspiraUI, and Shadcn for Vue',
-    video: 'https://player.vimeo.com/video/1069400766?autoplay=1&loop=1&muted=1&background=1',
-    technologies: ['Vue3', 'Pinia', 'Vite', 'Tailwind CSS', 'InspiraUI', 'Supabase', 'PostgreSQL'],
-    liveLink: 'Coming Soon!',
-    repoLink: 'https://github.com/burnsidion/jobgoblin'
   }
 ];
 const openModal = (project) =>
