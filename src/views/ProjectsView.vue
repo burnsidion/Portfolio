@@ -100,6 +100,15 @@ const selectedProject = ref(null);
 
 const apps = [
   {
+    name: 'NorthLink (CyberSanta)',
+    description: 'A production-ready full-stack holiday app featuring real-time updates, privacy-first architecture, and delightful animations.',
+    extendedDescription: 'Built with Next.js 16 App Router, TypeScript, and Supabase for a seamless gift coordination experience. Features include family group management with invite codes, privacy-protected purchase tracking using Row Level Security policies, real-time notifications via Supabase subscriptions, and advanced filtering/sorting capabilities. Implements multi-step purchase flows with festive loading states, confetti celebrations using Framer Motion and canvas-confetti, animated snowfall with shooting meteors, and mobile-optimized gradient spotlight cards. Authentication handled via Supabase Magic Link, with complete type safety throughout the codebase.',
+    video: 'https://player.vimeo.com/video/1139765558?autoplay=1&loop=1&muted=1&background=1',
+    technologies: ['Next.js 16', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Framer Motion'],
+    liveLink: 'https://north-link-swart.vercel.app/login',
+    repoLink: 'https://github.com/burnsidion/NorthLink',
+  },
+  {
     name: 'Inventour-y',
     description: 'A robust and responsive inventory and sales tracking application for merchandise managers.',
     extendedDescription: 'Allows users to easily add and keep track of inventory and nightly sales. Using Supabase for database hosting, Vue3 with Tailwind and DaisyUI on the Front-End. Express.js and Axios for the API.',
